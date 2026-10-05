@@ -2,25 +2,29 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initTabs();
+  initSmartNavbar();
+  initMobileDrawer();
+  initMagicParticles();
+  initLightbox();
   initMapSwitcher();
   initGalleryFilters();
   initCharacterBuilder();
   initChapterSearch();
 });
 
-// 1. TAB NAVIGATION
+// 1. TAB NAVIGATION (DESKTOP & MOBILE)
 function initTabs() {
-  const navLinks = document.querySelectorAll('.nav-link, .btn[data-target]');
+  const allNavLinks = document.querySelectorAll('.nav-link, .mobile-nav-link, .btn[data-target]');
   const tabPanes = document.querySelectorAll('.tab-pane');
 
-  navLinks.forEach(link => {
+  allNavLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       const targetId = link.getAttribute('data-target');
       if (!targetId) return;
       e.preventDefault();
 
-      // Update Nav Active State
-      document.querySelectorAll('.nav-link').forEach(nl => {
+      // Update Nav Active State across desktop & mobile
+      document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(nl => {
         nl.classList.toggle('active', nl.getAttribute('data-target') === targetId);
       });
 
@@ -29,12 +33,183 @@ function initTabs() {
         pane.classList.toggle('active', pane.id === targetId);
       });
 
+      // Close mobile drawer if open
+      closeMobileDrawer();
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   });
 }
 
-// 2. MAP SWITCHER
+// 2. SMART NAVBAR (SCROLL UP REVEAL, SCROLL DOWN HIDE ON MOBILE)
+function initSmartNavbar() {
+  const navbar = document.getElementById('navbar');
+  if (!navbar) return;
+
+  let lastScrollY = window.scrollY;
+
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > 60) {
+      navbar.classList.add('nav-scrolled');
+    } else {
+      navbar.classList.remove('nav-scrolled');
+    }
+
+    // Auto-hide when scrolling down on small screens, show on scroll up
+    if (window.innerWidth <= 900) {
+      if (currentScrollY > lastScrollY && currentScrollY > 120) {
+        navbar.classList.add('nav-hidden');
+      } else {
+        navbar.classList.remove('nav-hidden');
+      }
+    } else {
+      navbar.classList.remove('nav-hidden');
+    }
+
+    lastScrollY = currentScrollY;
+  }, { passive: true });
+}
+
+// 3. MOBILE DRAWER TOGGLE
+function initMobileDrawer() {
+  const navToggle = document.getElementById('nav-toggle');
+  const drawerClose = document.getElementById('drawer-close');
+  const drawerBackdrop = document.getElementById('drawer-backdrop');
+
+  navToggle?.addEventListener('click', () => {
+    const isOpen = navToggle.classList.contains('open');
+    if (isOpen) {
+      closeMobileDrawer();
+    } else {
+      openMobileDrawer();
+    }
+  });
+
+  drawerClose?.addEventListener('click', closeMobileDrawer);
+  drawerBackdrop?.addEventListener('click', closeMobileDrawer);
+}
+
+function openMobileDrawer() {
+  const navToggle = document.getElementById('nav-toggle');
+  const mobileDrawer = document.getElementById('mobile-drawer');
+  const drawerBackdrop = document.getElementById('drawer-backdrop');
+
+  navToggle?.classList.add('open');
+  mobileDrawer?.classList.add('open');
+  drawerBackdrop?.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobileDrawer() {
+  const navToggle = document.getElementById('nav-toggle');
+  const mobileDrawer = document.getElementById('mobile-drawer');
+  const drawerBackdrop = document.getElementById('drawer-backdrop');
+
+  navToggle?.classList.remove('open');
+  mobileDrawer?.classList.remove('open');
+  drawerBackdrop?.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// 4. DYNAMIC MAGIC PARTICLES CANVAS
+function initMagicParticles() {
+  const canvas = document.getElementById('magic-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  let width = (canvas.width = window.innerWidth);
+  let height = (canvas.height = window.innerHeight);
+
+  window.addEventListener('resize', () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  });
+
+  const colors = ['#d4af37', '#f3e5ab', '#8338ec', '#48cae4', '#9e2a2b'];
+  const particleCount = window.innerWidth < 768 ? 24 : 45;
+  const particles = [];
+
+  for (let i = 0; i < particleCount; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      radius: Math.random() * 2 + 0.8,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: -(Math.random() * 0.5 + 0.2),
+      alpha: Math.random() * 0.6 + 0.2,
+      dAlpha: (Math.random() * 0.01 + 0.005) * (Math.random() > 0.5 ? 1 : -1)
+    });
+  }
+
+  function render() {
+    ctx.clearRect(0, 0, width, height);
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.alpha += p.dAlpha;
+      if (p.alpha <= 0.1 || p.alpha >= 0.85) p.dAlpha *= -1;
+      if (p.y < -10) {
+        p.y = height + 10;
+        p.x = Math.random() * width;
+      }
+      if (p.x < -10) p.x = width + 10;
+      if (p.x > width + 10) p.x = -10;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.alpha;
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = p.color;
+      ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+    ctx.shadowBlur = 0;
+    requestAnimationFrame(render);
+  }
+  render();
+}
+
+// 5. IMAGE LIGHTBOX MODAL
+function initLightbox() {
+  const modal = document.getElementById('image-modal');
+  const modalImg = document.getElementById('modal-img');
+  const modalCaption = document.getElementById('modal-caption');
+  const modalClose = document.getElementById('modal-close');
+  const modalBackdrop = document.getElementById('modal-backdrop');
+
+  if (!modal || !modalImg) return;
+
+  const targetImages = document.querySelectorAll('.map-view-box img, .beast-card-img');
+  targetImages.forEach(img => {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', () => {
+      modalImg.src = img.src;
+      modalCaption.textContent = img.alt || img.getAttribute('title') || 'Phóng to ảnh';
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  modalClose?.addEventListener('click', closeModal);
+  modalBackdrop?.addEventListener('click', closeModal);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) {
+      closeModal();
+    }
+  });
+}
+
+// 6. MAP SWITCHER
 function initMapSwitcher() {
   const mapImg = document.getElementById('active-map-img');
   const mapTitle = document.getElementById('active-map-title');
@@ -67,7 +242,7 @@ function initMapSwitcher() {
   });
 }
 
-// 3. BEAST GALLERY FILTERS
+// 7. BEAST GALLERY FILTERS
 function initGalleryFilters() {
   const filterBtns = document.querySelectorAll('.filter-btn');
   const beastCards = document.querySelectorAll('.beast-card');
@@ -92,7 +267,7 @@ function initGalleryFilters() {
   });
 }
 
-// 4. INTERACTIVE CHARACTER BUILDER
+// 8. INTERACTIVE CHARACTER BUILDER
 function initCharacterBuilder() {
   const inputs = {
     name: document.getElementById('char-name'),
@@ -159,7 +334,7 @@ function initCharacterBuilder() {
   }
 }
 
-// 5. CHAPTER SEARCH
+// 9. CHAPTER SEARCH
 function initChapterSearch() {
   const searchInput = document.getElementById('chapter-search');
   const chapterItems = document.querySelectorAll('.chapter-nav-item');

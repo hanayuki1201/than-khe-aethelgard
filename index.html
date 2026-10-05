@@ -11,19 +11,55 @@
 </head>
 <body>
 
+  <!-- DYNAMIC MAGIC PARTICLES CANVAS -->
+  <canvas id="magic-canvas"></canvas>
+
   <!-- NAVBAR -->
-  <nav class="navbar">
-    <a href="#" class="nav-brand" data-target="tab-lore">
-      <span>⚔️ THẦN KHẾ AETHELGARD</span>
-    </a>
-    <ul class="nav-links">
-      <li><a class="nav-link active" data-target="tab-lore">📜 Toàn Thư 14 Chương</a></li>
-      <li><a class="nav-link" data-target="tab-map">🗺️ Bản Đồ & Địa Lý</a></li>
-      <li><a class="nav-link" data-target="tab-gallery">🐺 Nhân Thú & Nhân Vật</a></li>
-      <li><a class="nav-link" data-target="tab-guide">🧭 Cẩm Nang Sinh Tồn</a></li>
-      <li><a class="nav-link" data-target="tab-builder">🎮 Khởi Tạo Nhân Vật</a></li>
-    </ul>
+    <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-brand" data-target="tab-lore">
+        <span class="brand-crest">⚔️</span>
+        <span class="brand-text">THẦN KHẾ AETHELGARD</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="nav-links">
+        <li><a class="nav-link active" data-target="tab-lore"><span class="nav-icon">📜</span> Toàn Thư</a></li>
+        <li><a class="nav-link" data-target="tab-map"><span class="nav-icon">🗺️</span> Bản Đồ</a></li>
+        <li><a class="nav-link" data-target="tab-gallery"><span class="nav-icon">🐺</span> Dã Thú</a></li>
+        <li><a class="nav-link" data-target="tab-guide"><span class="nav-icon">🧭</span> Cẩm Nang</a></li>
+        <li><a class="nav-link" data-target="tab-builder"><span class="nav-icon">🎮</span> Tạo Nhân Vật</a></li>
+      </ul>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="nav-toggle" id="nav-toggle" aria-label="Mở bảng điều hướng">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer Overlay -->
+    <div class="mobile-drawer" id="mobile-drawer">
+      <div class="drawer-header">
+        <span class="drawer-title">⚜️ BẢNG ĐIỀU HƯỚNG</span>
+        <button class="drawer-close" id="drawer-close" aria-label="Đóng menu">✕</button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a class="mobile-nav-link active" data-target="tab-lore"><span class="drawer-icon">📜</span> Toàn Thư (14 Chương)</a></li>
+        <li><a class="mobile-nav-link" data-target="tab-map"><span class="drawer-icon">🗺️</span> Bản Đồ & Địa Lý Toàn Cảnh</a></li>
+        <li><a class="mobile-nav-link" data-target="tab-gallery"><span class="drawer-icon">🐺</span> Hồ Sơ Dã Thú & Nhân Vật</a></li>
+        <li><a class="mobile-nav-link" data-target="tab-guide"><span class="drawer-icon">🧭</span> Cẩm Nang Sinh Tồn 24h & HUD</a></li>
+        <li><a class="mobile-nav-link" data-target="tab-builder"><span class="drawer-icon">🎮</span> Trình Khởi Tạo Nhân Vật</a></li>
+      </ul>
+      <div class="drawer-footer">
+        <span class="footer-badge">Học Viện Kael-Varn • Hộp Cát Giả Lập</span>
+      </div>
+    </div>
+    <div class="drawer-backdrop" id="drawer-backdrop"></div>
   </nav>
+
 
   <!-- HERO SECTION -->
   <header class="hero">
@@ -772,6 +808,17 @@
     <p>© 2026 Thần Khế Aethelgard. Vũ trụ mô phỏng thế giới mở & Học viện ma thú Kael-Varn.</p>
   </footer>
 
+    <!-- IMAGE LIGHTBOX MODAL -->
+  <div id="image-modal" class="image-modal">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close" aria-label="Đóng ảnh">✕</button>
+      <img id="modal-img" src="" alt="Phóng to ảnh">
+      <p id="modal-caption" class="modal-caption"></p>
+    </div>
+  </div>
+
   <script src="app.js"></script>
+
 </body>
 </html>
