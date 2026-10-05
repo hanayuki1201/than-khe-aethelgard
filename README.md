@@ -5,18 +5,25 @@ Trọn bộ mã nguồn trang thông tin dành cho dự án Thần Khế Aethelg
 ---
 
 ## 1. CẤU TRÚC TỆP TIN
-- index.html: Giao diện chính tích hợp 5 phân hệ tương tác (Đại lục toàn thư 14 chương, Bản đồ tương tác, Hồ sơ ma thú, Cẩm nang sinh tồn, Trình tạo nhân vật).
+- index.html: Giao diện chính tích hợp 7 phân hệ tương tác:
+  1. Đại lục toàn thư (Toàn văn 14 chương tài liệu kèm tìm kiếm thời gian thực).
+  2. Bản đồ & Địa lý (Bản đồ thế giới, sơ đồ học viện, 6 tầng cao độ, 4 cấp an ninh).
+  3. 8 Phân khu học viện Kael-Varn (Trình khám phá tương tác 8 địa danh kèm phối cảnh mỹ thuật).
+  4. Bách thú & Nhân vật (Kho hồ sơ thẻ bài ma thú kèm bộ lọc phân loại).
+  5. Cẩm nang sinh tồn (Quy tắc thế giới mở, 3 cấp độ thân mật, HUD chọn giới tính).
+  6. Khám phá hộp cát (Bảng điều khiển gieo xúc xắc D20 ngẫu nhiên sinh kịch bản nhập vai).
+  7. Khởi tạo nhân vật (Biểu mẫu tạo hồ sơ nhập vai xuất văn bản một cú nhấp).
 - style.css: Bảng phong cách huyền ảo bóng đêm tối ưu hiển thị trên cả máy tính và điện thoại.
-- app.js: Bộ điều khiển logic tương tác, chuyển đổi bản đồ, lọc danh mục và sao chép hồ sơ nhân vật.
+- app.js: Bộ điều khiển logic tương tác, chuyển đổi bản đồ, tiêu điểm phân khu, lọc danh mục, bộ gieo xúc xắc hộp cát và hiệu ứng âm thanh ma mị.
 - vercel.json: Tệp tin cấu hình tối ưu định tuyến và bảo mật trên nền tảng Vercel.
-- assets/images/: Thư mục chứa các tệp ảnh chất lượng cao (bản đồ thế giới, sơ đồ học viện, áp phích và ảnh hồ sơ ma thú).
+- assets/images/: Thư mục chứa các tệp ảnh chất lượng cao.
 
 ---
 
 ## 2. PHƯƠNG THỨC 1: XEM TRỰC TIẾP TRÊN MÁY TÍNH
 1. Giải nén tệp tin Than_Khe_Aethelgard_Web.zip.
 2. Nhấp đúp vào tệp tin index.html để mở trang web trên trình duyệt ưa thích của bạn.
-3. Toàn bộ hình ảnh, tài liệu và công cụ tạo nhân vật đều hoạt động trơn tru mà không cần mạng Internet.
+3. Toàn bộ hình ảnh, tài liệu và công cụ tạo nhân vật đều hoạt động trơn tru.
 
 ---
 

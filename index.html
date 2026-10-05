@@ -6,59 +6,55 @@
   <title>Thần Khế Aethelgard - Thế Giới Mở & Học Viện Ma Thú</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@600;700;800;900&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- DYNAMIC MAGIC PARTICLES CANVAS -->
-  <canvas id="magic-canvas"></canvas>
+  <!-- AMBIENT PARTICLES -->
+  <canvas id="particles-canvas"></canvas>
 
   <!-- NAVBAR -->
-    <!-- NAVBAR -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="#" class="nav-brand" data-target="tab-lore">
-        <span class="brand-crest">⚔️</span>
-        <span class="brand-text">THẦN KHẾ AETHELGARD</span>
-      </a>
-
-      <!-- Desktop Nav Links -->
-      <ul class="nav-links">
-        <li><a class="nav-link active" data-target="tab-lore"><span class="nav-icon">📜</span> Toàn Thư</a></li>
-        <li><a class="nav-link" data-target="tab-map"><span class="nav-icon">🗺️</span> Bản Đồ</a></li>
-        <li><a class="nav-link" data-target="tab-gallery"><span class="nav-icon">🐺</span> Dã Thú</a></li>
-        <li><a class="nav-link" data-target="tab-guide"><span class="nav-icon">🧭</span> Cẩm Nang</a></li>
-        <li><a class="nav-link" data-target="tab-builder"><span class="nav-icon">🎮</span> Tạo Nhân Vật</a></li>
-      </ul>
-
-      <!-- Mobile Hamburger Button -->
-      <button class="nav-toggle" id="nav-toggle" aria-label="Mở bảng điều hướng">
-        <span class="hamburger-bar"></span>
-        <span class="hamburger-bar"></span>
-        <span class="hamburger-bar"></span>
-      </button>
-    </div>
-
-    <!-- Mobile Drawer Overlay -->
-    <div class="mobile-drawer" id="mobile-drawer">
-      <div class="drawer-header">
-        <span class="drawer-title">⚜️ BẢNG ĐIỀU HƯỚNG</span>
-        <button class="drawer-close" id="drawer-close" aria-label="Đóng menu">✕</button>
-      </div>
-      <ul class="mobile-nav-links">
-        <li><a class="mobile-nav-link active" data-target="tab-lore"><span class="drawer-icon">📜</span> Toàn Thư (14 Chương)</a></li>
-        <li><a class="mobile-nav-link" data-target="tab-map"><span class="drawer-icon">🗺️</span> Bản Đồ & Địa Lý Toàn Cảnh</a></li>
-        <li><a class="mobile-nav-link" data-target="tab-gallery"><span class="drawer-icon">🐺</span> Hồ Sơ Dã Thú & Nhân Vật</a></li>
-        <li><a class="mobile-nav-link" data-target="tab-guide"><span class="drawer-icon">🧭</span> Cẩm Nang Sinh Tồn 24h & HUD</a></li>
-        <li><a class="mobile-nav-link" data-target="tab-builder"><span class="drawer-icon">🎮</span> Trình Khởi Tạo Nhân Vật</a></li>
-      </ul>
-      <div class="drawer-footer">
-        <span class="footer-badge">Học Viện Kael-Varn • Hộp Cát Giả Lập</span>
-      </div>
-    </div>
-    <div class="drawer-backdrop" id="drawer-backdrop"></div>
+  <nav class="navbar">
+    <a href="#" class="nav-brand" data-target="tab-lore">
+      <span>⚔️ THẦN KHẾ AETHELGARD</span>
+    </a>
+    <ul class="nav-links">
+      <li><a class="nav-link active" data-target="tab-lore">📜 Toàn Thư 14 Chương</a></li>
+      <li><a class="nav-link" data-target="tab-map">🗺️ Bản Đồ & Địa Lý</a></li>
+      <li><a class="nav-link" data-target="tab-zones">🏛️ 8 Phân Khu Học Viện</a></li>
+      <li><a class="nav-link" data-target="tab-gallery">🐺 Nhân Thú & Nhân Vật</a></li>
+      <li><a class="nav-link" data-target="tab-guide">🧭 Cẩm Nang Sinh Tồn</a></li>
+      <li><a class="nav-link" data-target="tab-builder">🎮 Khởi Tạo Nhân Vật</a></li>
+    </ul>
   </nav>
+
+  <!-- LIVING WORLD STATUS HUD -->
+  <div class="world-hud-bar">
+    <div class="hud-item hud-time">
+      <span class="hud-icon">⏱️</span>
+      <span class="hud-label">Thời Gian Thế Giới:</span>
+      <span class="hud-val" id="hud-clock">21:45 (Đêm Muộn)</span>
+    </div>
+    <div class="hud-item hud-moon">
+      <span class="hud-icon">🩸</span>
+      <span class="hud-label">Thiên Tượng:</span>
+      <span class="hud-val" id="hud-phenomenon">Đêm Trăng Máu (Dã Tính +30%)</span>
+    </div>
+    <div class="hud-item hud-zone">
+      <span class="hud-icon">📍</span>
+      <span class="hud-label">Khu Vực:</span>
+      <span class="hud-val">Bán Đảo Sương Mù Kael-Varn</span>
+    </div>
+    <div class="hud-item hud-rule">
+      <span class="hud-icon">⏳</span>
+      <span class="hud-label">Dòng Chảy:</span>
+      <span class="hud-val">Vi Mô (1 Lượt = 15-30 Phút)</span>
+    </div>
+    <div class="hud-actions">
+      <button class="btn-hud" id="hud-sound-btn" title="Bật/Tắt Âm Hưởng Ma Thuật">🔇 Âm Hưởng</button>
+      <button class="btn-hud btn-hud-highlight" data-target="tab-sandbox">🎲 Thám Hiểm Hộp Cát</button>
+    </div>
+  </div>
 
 
   <!-- HERO SECTION -->
@@ -565,6 +561,7 @@
       <div class="map-controls">
         <button class="btn btn-primary map-btn" data-map="world">🌍 Bản Đồ Đại Lục Aethelgard</button>
         <button class="btn btn-secondary map-btn" data-map="campus">🏫 Sơ Đồ Học Viện Kael-Varn</button>
+        <button class="btn btn-secondary" data-target="tab-zones">🏛️ Xem Chi Tiết 8 Phân Khu</button>
       </div>
 
       <div class="map-view-box">
@@ -588,6 +585,269 @@
         </div>
       </div>
     </section>
+
+    
+    <!-- TAB 3: 8 PHÂN KHU HỌC VIỆN KAEL-VARN -->
+    <section id="tab-zones" class="tab-pane">
+      <div class="section-header">
+        <h2>🏛️ 8 PHÂN KHU HỌC VIỆN KAEL-VARN & BÁN ĐẢO SƯƠNG MÙ</h2>
+        <p>Học viện Kael-Varn tọa lạc trên Bán Đảo Sương Mù hình móng ngựa vươn ra Biển Đen, nối với lục địa qua một eo đất hẹp. Tám phân khu định hình đời sống học tập, rèn luyện ma pháp, chăm sóc khế thú và giao thương ngầm với sự phân tầng rõ rệt về đặc quyền và điều kiện sống.</p>
+      </div>
+
+      <!-- Thanh chọn nhanh phân khu -->
+      <div class="zone-selector-bar">
+        <button class="btn btn-primary zone-nav-btn active" data-zone="01">01. Cổng Tiền Trấn</button>
+        <button class="btn btn-secondary zone-nav-btn" data-zone="02">02. Đại Quảng Trường</button>
+        <button class="btn btn-secondary zone-nav-btn" data-zone="03">03. Tháp Kim Cương</button>
+        <button class="btn btn-secondary zone-nav-btn" data-zone="04">04. Dãy Tro Tàn</button>
+        <button class="btn btn-secondary zone-nav-btn" data-zone="05">05. Thư Viện Vạn Cuộn</button>
+        <button class="btn btn-secondary zone-nav-btn" data-zone="06">06. Đấu Trường Lôi Đài</button>
+        <button class="btn btn-secondary zone-nav-btn" data-zone="07">07. Rừng Sinh Thái</button>
+        <button class="btn btn-secondary zone-nav-btn" data-zone="08">08. Cảng Oakhaven</button>
+      </div>
+
+      <!-- Hộp tiêu điểm tương tác -->
+      <div class="zone-spotlight-box" id="zone-spotlight">
+        <div class="spotlight-img-container">
+          <img id="spotlight-img" src="https://lh3.googleusercontent.com/d/19YPyyBJRdQbqsyZGvWWUKZh8OnTdClt9" alt="Cổng Thành Tiền Trấn & Eo Đất Cổ">
+          <span class="spotlight-badge" id="spotlight-badge">Phân Khu 01 / 08</span>
+        </div>
+        <div class="spotlight-content">
+          <div class="spotlight-header">
+            <h3 id="spotlight-title">01. Cổng Thành Tiền Trấn & Eo Đất Cổ</h3>
+            <span class="placement-tag" id="spotlight-placement">📍 Eo đất phía Bắc, nối bán đảo với lục địa</span>
+          </div>
+          <p class="spotlight-desc" id="spotlight-desc">Trước khi nhìn thấy những tòa tháp của Kael-Varn, khách lữ hành phải bước qua cổng thành đá xám án ngữ eo đất. Những dòng cổ ngữ phủ trên vòm cổng đánh dấu ranh giới giữa lục địa và học viện. Tại trạm kiểm soát, Đội Hiệp Sĩ Giám Thị yêu cầu học sinh cùng khách vãng lai trình diện ấn ký khế ước.</p>
+          <div class="spotlight-grid">
+            <div class="spotlight-col">
+              <h4>🏛️ Đặc Điểm Kiến Trúc & An Ninh:</h4>
+              <ul id="spotlight-features">
+                <li>Cổng vòm đá xám khổng lồ khắc cổ ngữ</li><li>Đội Hiệp Sĩ Giám Thị kiểm soát lối vào</li>
+              </ul>
+            </div>
+            <div class="spotlight-col">
+              <h4>⚔️ Hoạt Động Của Học Sinh & Khế Thú:</h4>
+              <ul id="spotlight-activities">
+                <li>Trình diện ấn ký khế ước</li><li>Kiểm tra an ninh</li><li>Ra vào học viện</li>
+              </ul>
+            </div>
+          </div>
+          <div class="spotlight-actions">
+            <a id="spotlight-drive-link" href="https://drive.google.com/file/d/19YPyyBJRdQbqsyZGvWWUKZh8OnTdClt9/view?usp=drivesdk" target="_blank" class="btn btn-primary">🔍 Mở Ảnh Gốc Độ Phân Giải Cao Trên Google Drive</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bảng toàn bộ 8 thẻ phân khu -->
+      <div class="zone-section-subhead">
+        <h3>📜 TOÀN BỘ 8 PHÂN KHU HỌC VIỆN (CHI TIẾT VÀ ẢNH MINH HỌA)</h3>
+        <p>Bấm chọn từng phân khu hoặc lướt xem phối cảnh cảnh quan của toàn bộ học viện bên dưới</p>
+      </div>
+
+      <div class="zones-full-grid">
+
+        <div class="zone-card" id="zone-card-01" data-zone="01">
+          <div class="zone-img-wrap">
+            <img src="https://lh3.googleusercontent.com/d/19YPyyBJRdQbqsyZGvWWUKZh8OnTdClt9" alt="Cổng Thành Tiền Trấn & Eo Đất Cổ" class="zone-img" loading="lazy">
+            <span class="zone-number-badge">Phân Khu 01</span>
+          </div>
+          <div class="zone-body">
+            <h3 class="zone-title">01. Cổng Thành Tiền Trấn & Eo Đất Cổ</h3>
+            <div class="zone-placement">📍 Eo đất phía Bắc, nối bán đảo với lục địa</div>
+            <p class="zone-desc">Trước khi nhìn thấy những tòa tháp của Kael-Varn, khách lữ hành phải bước qua cổng thành đá xám án ngữ eo đất. Những dòng cổ ngữ phủ trên vòm cổng đánh dấu ranh giới giữa lục địa và học viện. Tại trạm kiểm soát, Đội Hiệp Sĩ Giám Thị yêu cầu học sinh cùng khách vãng lai trình diện ấn ký khế ước.</p>
+            <div class="zone-details-grid">
+              <div class="zone-detail-col">
+                <h4>🏛️ Đặc Điểm:</h4>
+                <ul><li>Cổng vòm đá xám khổng lồ khắc cổ ngữ</li><li>Đội Hiệp Sĩ Giám Thị kiểm soát lối vào</li></ul>
+              </div>
+              <div class="zone-detail-col">
+                <h4>⚔️ Hoạt Động:</h4>
+                <ul><li>Trình diện ấn ký khế ước</li><li>Kiểm tra an ninh</li><li>Ra vào học viện</li></ul>
+              </div>
+            </div>
+            <div class="zone-footer">
+              <a href="https://drive.google.com/file/d/19YPyyBJRdQbqsyZGvWWUKZh8OnTdClt9/view?usp=drivesdk" target="_blank" class="btn btn-secondary btn-sm">🔍 Mở Ảnh Gốc Trên Google Drive</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="zone-card" id="zone-card-02" data-zone="02">
+          <div class="zone-img-wrap">
+            <img src="https://lh3.googleusercontent.com/d/1glSXZRjWkNa3AFpOHNem06gjYr2RuQYL" alt="Đại Quảng Trường Khế Ước Cổ Ngữ" class="zone-img" loading="lazy">
+            <span class="zone-number-badge">Phân Khu 02</span>
+          </div>
+          <div class="zone-body">
+            <h3 class="zone-title">02. Đại Quảng Trường Khế Ước Cổ Ngữ</h3>
+            <div class="zone-placement">📍 Trung tâm học viện</div>
+            <p class="zone-desc">Đại quảng trường là nơi những lời khế ước đầu tiên cất lên giữa lòng Kael-Varn. Vòng Tròn Khế Ước Thần Thánh phát sáng trên nền đá hoa cương, được bao quanh bởi mười hai cột trụ khắc hình các chủng loài thủy tổ. Từ lễ khai giảng đến kỳ thi thức tỉnh và các lễ hội lớn, nhịp sống của học viện đều tìm về nơi này.</p>
+            <div class="zone-details-grid">
+              <div class="zone-detail-col">
+                <h4>🏛️ Đặc Điểm:</h4>
+                <ul><li>Vòng Tròn Khế Ước Thần Thánh bằng đá hoa cương phát quang</li><li>12 cột trụ khắc các chủng loài thủy tổ</li><li>Tháp đồng hồ</li></ul>
+              </div>
+              <div class="zone-detail-col">
+                <h4>⚔️ Hoạt Động:</h4>
+                <ul><li>Lễ khai giảng</li><li>Thi thức tỉnh</li><li>Lễ hội học viện</li></ul>
+              </div>
+            </div>
+            <div class="zone-footer">
+              <a href="https://drive.google.com/file/d/1glSXZRjWkNa3AFpOHNem06gjYr2RuQYL/view?usp=drivesdk" target="_blank" class="btn btn-secondary btn-sm">🔍 Mở Ảnh Gốc Trên Google Drive</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="zone-card" id="zone-card-03" data-zone="03">
+          <div class="zone-img-wrap">
+            <img src="https://lh3.googleusercontent.com/d/1xjuLAyymliYVV1H9uFMf6cPXJVnJ3aAm" alt="Tòa Tháp Kim Cương" class="zone-img" loading="lazy">
+            <span class="zone-number-badge">Phân Khu 03</span>
+          </div>
+          <div class="zone-body">
+            <h3 class="zone-title">03. Tòa Tháp Kim Cương</h3>
+            <div class="zone-placement">📍 Mỏm đồi cao phía Đông, hướng ra biển</div>
+            <p class="zone-desc">Nằm trên mỏm đồi cao phía Đông, Tòa Tháp Kim Cương đón ánh nắng đầu tiên trên bán đảo. Sau những hành lang cẩm thạch trắng là đời sống xa hoa của học sinh quý tộc: hồ nước biển riêng cho thủy tộc, sân đáp cho phi hành thú và người hầu túc trực. Cảnh biển rộng mở làm nổi bật đặc quyền mà nhiều cư dân Kael-Varn chỉ có thể nhìn thấy từ xa.</p>
+            <div class="zone-details-grid">
+              <div class="zone-detail-col">
+                <h4>🏛️ Đặc Điểm:</h4>
+                <ul><li>Cẩm thạch trắng xa hoa</li><li>Ký túc xá dành cho quý tộc thuần huyết</li><li>Hồ nước biển riêng và sân đáp phi hành thú</li><li>Người hầu phục vụ</li></ul>
+              </div>
+              <div class="zone-detail-col">
+                <h4>⚔️ Hoạt Động:</h4>
+                <ul><li>Sinh hoạt ký túc xá quý tộc</li><li>Chăm sóc thủy tộc trong hồ riêng</li><li>Đáp và nghỉ cho phi hành thú</li></ul>
+              </div>
+            </div>
+            <div class="zone-footer">
+              <a href="https://drive.google.com/file/d/1xjuLAyymliYVV1H9uFMf6cPXJVnJ3aAm/view?usp=drivesdk" target="_blank" class="btn btn-secondary btn-sm">🔍 Mở Ảnh Gốc Trên Google Drive</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="zone-card" id="zone-card-04" data-zone="04">
+          <div class="zone-img-wrap">
+            <img src="https://lh3.googleusercontent.com/d/17EFE6C-qgnQhPecce6HLrA6pMJiLsxbI" alt="Dãy Tro Tàn" class="zone-img" loading="lazy">
+            <span class="zone-number-badge">Phân Khu 04</span>
+          </div>
+          <div class="zone-body">
+            <h3 class="zone-title">04. Dãy Tro Tàn</h3>
+            <div class="zone-placement">📍 Phía Tây, chân hẻm núi sát vách biển</div>
+            <p class="zone-desc">Dưới chân hẻm núi phía Tây, Dãy Tro Tàn sống cùng tiếng sóng và hơi lạnh bám trên những bức tường đá xám. Học sinh diện học bổng, dân nghèo và những người bị kỷ luật tự tìm củi sưởi, rồi chia sẻ giường gỗ với khế thú. Những mái nhà rêu phong này cho thấy một đời sống rất khác với các tầng cẩm thạch phía Đông học viện.</p>
+            <div class="zone-details-grid">
+              <div class="zone-detail-col">
+                <h4>🏛️ Đặc Điểm:</h4>
+                <ul><li>Nhà đá xám cũ kỹ, rêu phong và ẩm lạnh</li><li>Sát biển và dưới chân hẻm núi</li><li>Nơi ở của học sinh nghèo, học bổng và người bị kỷ luật</li></ul>
+              </div>
+              <div class="zone-detail-col">
+                <h4>⚔️ Hoạt Động:</h4>
+                <ul><li>Sinh hoạt của học sinh học bổng và dân nghèo</li><li>Tự kiếm củi và giữ ấm</li><li>Chia sẻ chỗ nghỉ với khế thú</li></ul>
+              </div>
+            </div>
+            <div class="zone-footer">
+              <a href="https://drive.google.com/file/d/17EFE6C-qgnQhPecce6HLrA6pMJiLsxbI/view?usp=drivesdk" target="_blank" class="btn btn-secondary btn-sm">🔍 Mở Ảnh Gốc Trên Google Drive</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="zone-card" id="zone-card-05" data-zone="05">
+          <div class="zone-img-wrap">
+            <img src="https://lh3.googleusercontent.com/d/1N2GbjNyfjDz14R0IHI0sESa2lHr0fhDP" alt="Giảng Đường Trung Tâm & Thư Viện Vạn Cuộn" class="zone-img" loading="lazy">
+            <span class="zone-number-badge">Phân Khu 05</span>
+          </div>
+          <div class="zone-body">
+            <h3 class="zone-title">05. Giảng Đường Trung Tâm & Thư Viện Vạn Cuộn</h3>
+            <div class="zone-placement">📍 Giữa Tòa Tháp Kim Cương và Dãy Tro Tàn</div>
+            <p class="zone-desc">Giữa Tòa Tháp Kim Cương và Dãy Tro Tàn, tòa tháp bát giác bảy tầng giữ một vị trí trung lập. Giảng đường, Thư Viện Vạn Cuộn, các bản đồ địa lý và phòng bào chế ma dược cùng nằm trong khối kiến trúc này. Với người học cổ ngữ, nhà thám hiểm hay người điều chế độc dược, đây là nơi tri thức của đại lục trở thành công cụ cho hành trình phía trước.</p>
+            <div class="zone-details-grid">
+              <div class="zone-detail-col">
+                <h4>🏛️ Đặc Điểm:</h4>
+                <ul><li>Tòa tháp bát giác 7 tầng</li><li>Hàng triệu cuộn sách cổ</li><li>Bản đồ địa lý và phòng bào chế ma dược</li><li>Không gian trung lập giữa hai khu ký túc xá</li></ul>
+              </div>
+              <div class="zone-detail-col">
+                <h4>⚔️ Hoạt Động:</h4>
+                <ul><li>Học lý thuyết</li><li>Tra cứu cổ thư và bản đồ</li><li>Bào chế ma dược</li></ul>
+              </div>
+            </div>
+            <div class="zone-footer">
+              <a href="https://drive.google.com/file/d/1N2GbjNyfjDz14R0IHI0sESa2lHr0fhDP/view?usp=drivesdk" target="_blank" class="btn btn-secondary btn-sm">🔍 Mở Ảnh Gốc Trên Google Drive</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="zone-card" id="zone-card-06" data-zone="06">
+          <div class="zone-img-wrap">
+            <img src="https://lh3.googleusercontent.com/d/1-VyvgdrOhBNubRlSFy4ODTpOlNUFY3Ff" alt="Đấu Trường Lôi Đài Ma Thú" class="zone-img" loading="lazy">
+            <span class="zone-number-badge">Phân Khu 06</span>
+          </div>
+          <div class="zone-body">
+            <h3 class="zone-title">06. Đấu Trường Lôi Đài Ma Thú</h3>
+            <div class="zone-placement">📍 Lòng chảo phía Nam bán đảo</div>
+            <p class="zone-desc">Ở lòng chảo phía Nam, những bậc khán đài đá ôm lấy Đấu Trường Lôi Đài Ma Thú. Kết giới nguyên tố ngăn những đợt công kích lan ra ngoài sân, nơi học sinh luyện phối hợp cùng khế thú và tham gia các trận quyết đấu phân hạng tháng. Những bài học về sức mạnh ở đây luôn đi cùng khả năng kiểm soát nó.</p>
+            <div class="zone-details-grid">
+              <div class="zone-detail-col">
+                <h4>🏛️ Đặc Điểm:</h4>
+                <ul><li>Đấu trường đá dạng lòng chảo La Mã</li><li>Kết giới nguyên tố kiên cố</li><li>Nằm tại khu phía Nam</li></ul>
+              </div>
+              <div class="zone-detail-col">
+                <h4>⚔️ Hoạt Động:</h4>
+                <ul><li>Quyết đấu 1v1 phân hạng tháng</li><li>Huấn luyện thực chiến phối hợp</li></ul>
+              </div>
+            </div>
+            <div class="zone-footer">
+              <a href="https://drive.google.com/file/d/1-VyvgdrOhBNubRlSFy4ODTpOlNUFY3Ff/view?usp=drivesdk" target="_blank" class="btn btn-secondary btn-sm">🔍 Mở Ảnh Gốc Trên Google Drive</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="zone-card" id="zone-card-07" data-zone="07">
+          <div class="zone-img-wrap">
+            <img src="https://lh3.googleusercontent.com/d/1XBZ9MEBmU8rR20nBW9R8IMdXaZ5u1XDo" alt="Rừng Sinh Thái Thử Nghiệm & Trại Nuôi Dã Thú" class="zone-img" loading="lazy">
+            <span class="zone-number-badge">Phân Khu 07</span>
+          </div>
+          <div class="zone-body">
+            <h3 class="zone-title">07. Rừng Sinh Thái Thử Nghiệm & Trại Nuôi Dã Thú</h3>
+            <div class="zone-placement">📍 Phía Bắc bán đảo</div>
+            <p class="zone-desc">Rừng Sinh Thái Thử Nghiệm là khu rừng nhân tạo khép kín phía Bắc học viện. Hàng rào ma thuật giữ dã thú cấp thấp trong phạm vi bảo tồn, còn các chuồng nuôi là nơi học sinh năm đầu bắt đầu học cách chăm sóc và thuần hóa ấu thú. Việc dọn chuồng, cho ăn và quan sát từng phản ứng nhỏ là một phần của đời sống thường ngày tại đây.</p>
+            <div class="zone-details-grid">
+              <div class="zone-detail-col">
+                <h4>🏛️ Đặc Điểm:</h4>
+                <ul><li>Rừng nhân tạo khép kín</li><li>Hàng rào ma thuật</li><li>Nơi thực hành của học sinh năm đầu</li></ul>
+              </div>
+              <div class="zone-detail-col">
+                <h4>⚔️ Hoạt Động:</h4>
+                <ul><li>Thuần hóa ấu thú</li><li>Dọn chuồng</li><li>Thực hành chăm sóc dã thú cấp thấp</li></ul>
+              </div>
+            </div>
+            <div class="zone-footer">
+              <a href="https://drive.google.com/file/d/1XBZ9MEBmU8rR20nBW9R8IMdXaZ5u1XDo/view?usp=drivesdk" target="_blank" class="btn btn-secondary btn-sm">🔍 Mở Ảnh Gốc Trên Google Drive</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="zone-card" id="zone-card-08" data-zone="08">
+          <div class="zone-img-wrap">
+            <img src="https://lh3.googleusercontent.com/d/11zhCNdEFErDE5xd6kn1KK9K87q39SStW" alt="Thị Trấn Cảng Oakhaven & Chợ Đen Thủy Triều Đen" class="zone-img" loading="lazy">
+            <span class="zone-number-badge">Phân Khu 08</span>
+          </div>
+          <div class="zone-body">
+            <h3 class="zone-title">08. Thị Trấn Cảng Oakhaven & Chợ Đen Thủy Triều Đen</h3>
+            <div class="zone-placement">📍 Sườn bờ biển phía Đông Nam</div>
+            <p class="zone-desc">Oakhaven trải dần xuống bờ biển phía Đông Nam, nơi thuyền buồm cập bến giữa tửu quán thợ săn và những xưởng rèn ma khí. Khi thủy triều rút, các hang động bên dưới mở lối tới Chợ Đen Thủy Triều Đen. Phố cảng có đời sống giao thương công khai; dưới chân vách đá, trứng thú lậu và hàng cấm đổi chủ trong ánh đèn kín đáo.</p>
+            <div class="zone-details-grid">
+              <div class="zone-detail-col">
+                <h4>🏛️ Đặc Điểm:</h4>
+                <ul><li>Thị trấn cảng sầm uất trên mặt đất</li><li>Tửu quán thợ săn và xưởng rèn ma khí</li><li>Chợ đen trong các hang động ngầm lúc thủy triều rút</li><li>Buôn bán trứng thú lậu và hàng cấm</li></ul>
+              </div>
+              <div class="zone-detail-col">
+                <h4>⚔️ Hoạt Động:</h4>
+                <ul><li>Giao thương tại bến cảng</li><li>Ghé tửu quán thợ săn và xưởng rèn ma khí</li><li>Khám phá chợ đen khi thủy triều rút</li></ul>
+              </div>
+            </div>
+            <div class="zone-footer">
+              <a href="https://drive.google.com/file/d/11zhCNdEFErDE5xd6kn1KK9K87q39SStW/view?usp=drivesdk" target="_blank" class="btn btn-secondary btn-sm">🔍 Mở Ảnh Gốc Trên Google Drive</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     <!-- TAB 3: BÁCH THÚ & NHÂN THÚ GALLERY -->
     <section id="tab-gallery" class="tab-pane">
@@ -615,7 +875,24 @@
             </div>
             <div class="beast-species">Nhóm Thú Rừng & Lục Địa</div>
             <p class="beast-desc">Loài sói tuyết kiêu hãnh; khi hóa người mang mái tóc bạch kim, đôi tai sói nhạy cảm và ánh mắt sắc lạnh. Bản năng một bạn đời duy nhất tuyệt đối chung thủy.</p>
-            <div class="beast-traits"><b>Thuộc tính:</b> Băng Giá & Nguyệt Quang | <b>Khẩu vị:</b> Tủy xương quái thú nướng</div>
+            <div class="beast-stats">
+              <div class="stat-row">
+                <span class="stat-name">🩸 Dã Tính:</span>
+                <div class="stat-bar-bg"><div class="stat-bar-fill feral" style="width: 85%;"></div></div>
+                <span class="stat-num">85%</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-name">🔮 Tinh Lực:</span>
+                <div class="stat-bar-bg"><div class="stat-bar-fill energy" style="width: 45%;"></div></div>
+                <span class="stat-num">45/100</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-name">⚔️ Lực Chiến:</span>
+                <div class="stat-bar-bg"><div class="stat-bar-fill combat" style="width: 80%;"></div></div>
+                <span class="stat-num">Rank A+</span>
+              </div>
+            </div>
+            <div class="beast-traits"><b>Thuộc tính:</b> Băng Giá & Nguyệt Quang | <b>Khẩu vị:</b> Tủy xương quái thú nướng<br><b>Phản ứng vuốt ve:</b> Gầm gừ cảnh giác nhưng dần nhắm mắt tận hưởng nếu gãi đúng hõm tai.</div>
           </div>
         </div>
 
@@ -700,6 +977,106 @@
         <p>Nếu sở hữu tinh lực mạnh mẽ, bạn có thể lập khế ước với 3 đến 5 thú. Đi kèm với sức mạnh vượt trội là thử thách giải quyết cuộc chiến tranh giành vị trí đầu đàn và hành vi cắn cọ xát để ghi đè mùi hương giữa các thú.</p>
       </div>
     </section>
+
+    
+    <!-- TAB: MÔ PHỎNG HỘP CÁT & BIẾN CỐ THẾ GIỚI MỞ -->
+    <section id="tab-sandbox" class="tab-pane">
+      <div class="section-header">
+        <h2>🎲 BẢNG ĐIỀU KHIỂN HỘP CÁT & BIẾN CỐ THẾ GIỚI MỞ</h2>
+        <p>Mô phỏng cơ chế giả lập thế giới thực: Tự do chọn bối cảnh, gieo xúc xắc biến cố ngẫu nhiên và nhận kịch bản nhập vai chuẩn xác để gửi thẳng vào Chatbot</p>
+      </div>
+
+      <div class="sandbox-layout">
+        <!-- Bảng điều khiển thiết lập -->
+        <div class="sandbox-panel-card">
+          <h3 class="panel-title">⚙️ THIẾT LẬP THAM SỐ THÁM HIỂM</h3>
+          
+          <div class="form-group">
+            <label for="sb-location">📍 Địa Điểm Thám Hiểm:</label>
+            <select id="sb-location" class="form-control">
+              <option value="Rừng Cấm Sylva (Cấm vực tử địa phía Bắc)">Rừng Cấm Sylva (Cấm vực tử địa phía Bắc)</option>
+              <option value="Đại Quảng Trường Khế Ước Cổ Ngữ (Trung tâm học viện)">Đại Quảng Trường Khế Ước Cổ Ngữ (Trung tâm học viện)</option>
+              <option value="Dãy Tro Tàn (Hẻm núi sát vách biển)">Dãy Tro Tàn (Hẻm núi sát vách biển)</option>
+              <option value="Tòa Tháp Kim Cương (Khu biệt thự quý tộc)">Tòa Tháp Kim Cương (Khu biệt thự quý tộc)</option>
+              <option value="Thư Viện Vạn Cuộn & Giảng Đường Trung Tâm">Thư Viện Vạn Cuộn & Giảng Đường Trung Tâm</option>
+              <option value="Đấu Trường Lôi Đài Ma Thú (Lòng chảo phía Nam)">Đấu Trường Lôi Đài Ma Thú (Lòng chảo phía Nam)</option>
+              <option value="Chợ Đen Thủy Triều Đen (Hang động ngầm lúc thủy triều rút)">Chợ Đen Thủy Triều Đen (Hang động ngầm lúc thủy triều rút)</option>
+              <option value="Rừng Sinh Thái Thử Nghiệm & Trại Nuôi Ấu Thú">Rừng Sinh Thái Thử Nghiệm & Trại Nuôi Ấu Thú</option>
+            </select>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div class="form-group">
+              <label for="sb-time">⏱️ Thời Khắc Trong Ngày:</label>
+              <select id="sb-time" class="form-control">
+                <option value="Bình Minh 06:00 (Sương sớm mờ ảo)">Bình Minh 06:00 (Sương sớm mờ ảo)</option>
+                <option value="Giờ Giảng Đường 10:00 (Học viện đông đúc)">Giờ Giảng Đường 10:00 (Học viện đông đúc)</option>
+                <option value="Hoàng Hôn 18:00 (Chuông tan học điểm)">Hoàng Hôn 18:00 (Chuông tan học điểm)</option>
+                <option value="Đêm Cấm Giới 23:30 (Hiệp sĩ tuần tra gắt gao)">Đêm Cấm Giới 23:30 (Đêm giới nghiêm)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="sb-weather">🌩️ Thời Tiết Ma Pháp:</label>
+              <select id="sb-weather" class="form-control">
+                <option value="Sương Mù Bí Thuật Dày Đặc">Sương Mù Bí Thuật Dày Đặc</option>
+                <option value="Đêm Trăng Máu (Dã Tính +30%)">Đêm Trăng Máu (Dã Tính +30%)</option>
+                <option value="Mưa Bão Lôi Điện Dữ Dội">Mưa Bão Lôi Điện Dữ Dội</option>
+                <option value="Gió Biển Lạnh Giá Yên Bình">Gió Biển Lạnh Giá Yên Bình</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div class="form-group">
+              <label for="sb-beast">🐾 Khế Thú Đi Cùng:</label>
+              <select id="sb-beast" class="form-control">
+                <option value="Sương Lang Nguyệt Ảnh (Sói Băng Tuyết)">Sương Lang Nguyệt Ảnh (Sói Băng Tuyết)</option>
+                <option value="Siren Dạ Khúc (Hải Quái Biển Sâu)">Siren Dạ Khúc (Hải Quái Biển Sâu)</option>
+                <option value="Bạch Lộc Sừng Hoa (Thần Thú Trị Liệu)">Bạch Lộc Sừng Hoa (Thần Thú Trị Liệu)</option>
+                <option value="Cửu Vĩ Linh Hồ (Hồ Ly 9 Đuôi Huyễn Thuật)">Cửu Vĩ Linh Hồ (Hồ Ly 9 Đuôi)</option>
+                <option value="Tự Do Khám Phá Một Mình">Tự Do Khám Phá Một Mình</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="sb-state">🔥 Trạng Thái Dã Tính / Tinh Lực:</label>
+              <select id="sb-state" class="form-control">
+                <option value="Dã tính bộc phát (Gầm gừ thèm thịt tươi)">Dã tính bộc phát (Gầm gừ thèm thịt tươi)</option>
+                <option value="Tinh lực 95% (Sắp kích hoạt hóa hình người)">Tinh lực 95% (Sắp hóa hình người)</option>
+                <option value="Ngoan ngoãn bám dính (Cần được vỗ về)">Ngoan ngoãn bám dính (Cần vỗ về)</option>
+                <option value="Bị thương nhẹ sau trận chiến (Cần sơ cứu)">Bị thương nhẹ sau chiến đấu</option>
+              </select>
+            </div>
+          </div>
+
+          <button id="roll-encounter-btn" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 1.05rem; padding: 14px; margin-top: 10px;">
+            🎲 GIEO XÚC XẮC BIẾN CỐ HỘP CÁT (ROLL D20)
+          </button>
+        </div>
+
+        <!-- Màn hình kết quả mô phỏng -->
+        <div class="sandbox-result-card">
+          <div class="result-header">
+            <div class="dice-badge" id="dice-result">🎲 D20: [Chờ Gieo]</div>
+            <span class="outcome-type" id="outcome-type">Trạng Thái Thế Giới: Sẵn Sàng</span>
+          </div>
+
+          <div class="encounter-body" id="encounter-text">
+            Nhấn nút <b>"GIEO XÚC XẮC BIẾN CỐ HỘP CÁT"</b> để khởi động thuật toán giả lập thế giới mở. Hệ thống sẽ kết hợp địa điểm, thời gian, thời tiết và trạng thái thú để sinh ra tình huống nhập vai bất ngờ chuẩn RPG!
+          </div>
+
+          <div class="encounter-choices" id="encounter-choices" style="display: none;">
+            <h4>⚔️ Lựa Chọn Hành Động Dành Cho Bạn:</h4>
+            <div class="choice-list" id="choices-container"></div>
+          </div>
+
+          <div class="result-actions" style="margin-top: 1.5rem; display: flex; gap: 12px;">
+            <button id="copy-encounter-btn" class="btn btn-primary" style="flex: 1;">📋 Sao Chép Kịch Bản Nhập Vai</button>
+            <button id="reroll-btn" class="btn btn-secondary">🔄 Gieo Lại</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     <!-- TAB 5: CHARACTER BUILDER -->
     <section id="tab-builder" class="tab-pane">
@@ -808,17 +1185,6 @@
     <p>© 2026 Thần Khế Aethelgard. Vũ trụ mô phỏng thế giới mở & Học viện ma thú Kael-Varn.</p>
   </footer>
 
-    <!-- IMAGE LIGHTBOX MODAL -->
-  <div id="image-modal" class="image-modal">
-    <div class="modal-backdrop" id="modal-backdrop"></div>
-    <div class="modal-content">
-      <button class="modal-close" id="modal-close" aria-label="Đóng ảnh">✕</button>
-      <img id="modal-img" src="" alt="Phóng to ảnh">
-      <p id="modal-caption" class="modal-caption"></p>
-    </div>
-  </div>
-
   <script src="app.js"></script>
-
 </body>
 </html>
