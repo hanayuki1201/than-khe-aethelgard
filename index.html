@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thần Khế Aethelgard - Thế Giới Mở & Học Viện Ma Thú</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="#" class="nav-brand" data-target="tab-lore">
+      <span>⚔️ THẦN KHẾ AETHELGARD</span>
+    </a>
+    <ul class="nav-links">
+      <li><a class="nav-link active" data-target="tab-lore">📜 Toàn Thư 14 Chương</a></li>
+      <li><a class="nav-link" data-target="tab-map">🗺️ Bản Đồ & Địa Lý</a></li>
+      <li><a class="nav-link" data-target="tab-gallery">🐺 Nhân Thú & Nhân Vật</a></li>
+      <li><a class="nav-link" data-target="tab-guide">🧭 Cẩm Nang Sinh Tồn</a></li>
+      <li><a class="nav-link" data-target="tab-builder">🎮 Khởi Tạo Nhân Vật</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>ĐẠI LỤC THẦN KHẾ AETHELGARD</h1>
+      <p class="hero-tagline">"Ngươi đến Kael-Varn để tìm kiếm quyền lực, tri kỷ, hay chỉ đang đào sẵn một nấm mồ giữa đàn dã thú?"</p>
+      <div class="hero-tags">
+        <span class="tag-badge">Open World</span>
+        <span class="tag-badge">Sandbox Simulation</span>
+        <span class="tag-badge">Magic Academy</span>
+        <span class="tag-badge">Beast Tamer</span>
+        <span class="tag-badge">Shapeshifter</span>
+        <span class="tag-badge">Living World</span>
+        <span class="tag-badge">Slow Burn</span>
+        <span class="tag-badge">Feral Biology</span>
+        <span class="tag-badge">Mature 18+</span>
+      </div>
+      <p class="hero-desc">
+        Một vũ trụ giả tưởng đen tối nơi ma lực cuồng bạo được thuần hóa qua "Ấn Ký Linh Thần". Khi linh thú hấp thụ tinh lực thuần khiết của bạn để phá vỡ xiềng xích huyết mạch, chúng sẽ lột xác thành hình nhân dạng hoàn chỉnh nhưng vẫn giữ nguyên bản năng dã tính nguy hiểm và chu kỳ động dục chiếm hữu.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" data-target="tab-lore">📖 Đọc Đại Lục Toàn Thư</a>
+        <a class="btn btn-secondary" data-target="tab-map">🗺️ Khám Phá Bản Đồ</a>
+        <a class="btn btn-secondary" data-target="tab-builder">🎮 Tạo Nhân Vật Ngay</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="container">
+
+    <!-- TAB 1: LOREBOOK 14 CHƯƠNG -->
+    <section id="tab-lore" class="tab-pane active">
+      <div class="section-header">
+        <h2>📜 ĐẠI LỤC TOÀN THƯ (14 CHƯƠNG)</h2>
+        <p>Thiết lập thế giới mở chi tiết về biên niên sử, 5 đại cấm vực, sinh học dã tính và cơ chế đa thần khế</p>
+      </div>
+      <div class="lore-layout">
+        <aside class="lore-sidebar">
+          <input type="text" id="chapter-search" class="search-box" placeholder="🔍 Tìm kiếm chương hoặc từ khóa...">
+          <ul class="chapter-nav-list">
+            <li class="chapter-nav-item active" data-chapter-id="chap-1">CHƯƠNG 1: BIÊN NIÊN SỬ ĐẠI LỤC & NGUỒN GỐC MA LỰC</li>
+<li class="chapter-nav-item " data-chapter-id="chap-2">CHƯƠNG 2: ĐỊA LÝ TOÀN CẢNH ĐẠI LỤC & CÁC ĐẠI CẤM VỰC TỬ VONG</li>
+<li class="chapter-nav-item " data-chapter-id="chap-3">CHƯƠNG 3: CƠ CHẾ TIẾN HÓA ĐA NHÁNH</li>
+<li class="chapter-nav-item " data-chapter-id="chap-4">CHƯƠNG 4: BÁCH THÚ THẦN KHẾ TOÀN THƯ</li>
+<li class="chapter-nav-item " data-chapter-id="chap-5">CHƯƠNG 5: SINH HỌC DÃ TÍNH, CƠ CHẾ GIAO HÒA TINH LỰC & TÌNH CẢM THÂN MẬT</li>
+<li class="chapter-nav-item " data-chapter-id="chap-6">CHƯƠNG 6: HỌC VIỆN KAEL-VARN & HỆ SINH THÁI ĐỜI SỐNG</li>
+<li class="chapter-nav-item " data-chapter-id="chap-7">CHƯƠNG 7: DÀN PHẢN DIỆN Ý THỨC HỆ ĐA CHIỀU</li>
+<li class="chapter-nav-item " data-chapter-id="chap-8">CHƯƠNG 8: HỆ THỐNG PHÂN CẤP XÃ HỘI, GIAI TẦNG & ĐỊA VỊ PHÁP LÝ</li>
+<li class="chapter-nav-item " data-chapter-id="chap-9">CHƯƠNG 9: CẨM NANG KHỞI TẠO TỰ DO DÀNH CHO {{USER}}</li>
+<li class="chapter-nav-item " data-chapter-id="chap-10">CHƯƠNG 10: KINH TẾ, THỜI TRANG & ĐỜI SỐNG THƯƠNG MẠI</li>
+<li class="chapter-nav-item " data-chapter-id="chap-11">CHƯƠNG 11: CƠ CHẾ VẬN HÀNH MÔ PHỎNG THẾ GIỚI MỞ</li>
+<li class="chapter-nav-item " data-chapter-id="chap-12">CHƯƠNG 12: HỆ THỐNG GIÁO DỤC, LỘ TRÌNH 4 NĂM, NHIỆM VỤ & NGHỀ NGHIỆP TỐT NGHIỆP</li>
+<li class="chapter-nav-item " data-chapter-id="chap-13">CHƯƠNG 13: HỆ THỐNG BIẾN CỐ & SỰ KIỆN MỞ TOÀN CẦU</li>
+<li class="chapter-nav-item " data-chapter-id="chap-14">CHƯƠNG 14: CƠ CHẾ ĐA THẦN KHẾ: MỘT CHỦ NHIỀU THÚ</li>
+          </ul>
+        </aside>
+        <article class="lore-content">
+          <h1 id="chap-1">CHƯƠNG 1: BIÊN NIÊN SỬ ĐẠI LỤC & NGUỒN GỐC MA LỰC</h1>
+<h2>1.1. Kỷ Nguyên Thủy Tổ & Thần Thú Nguyên Sinh (Kỷ Thứ Nhất)</h2>
+<p>Thuở sơ khai, đại lục Aethelgard chưa có bóng dáng con người. Thế giới thuộc về các Cự Thú Nguyên Sinh và Hải Mẫu Thần Tộc dưới đáy đại dương. Ma lực thế giới khi ấy vô cùng cuồng bạo, con người sinh ra là giống loài yếu ớt nhất, chỉ biết trú ngụ trong các hang đá và bờ vịnh hoang vu.</p>
+<h2>1.2. Thần Khế Đầu Tiên & Kỷ Nguyên Khai Sáng (Kỷ Thứ Hai)</h2>
+<p>Cách đây 1.200 năm, hiện tượng "Thủy Triều Hư Không" mở ra các vết nứt vực sâu làm ô nhiễm sinh linh. Vị Vua Tiền Tri của loài người cùng Nữ Hoàng San Hô tộc Mermaid đã sáng lập nên "Ấn Ký Linh Thần":</p>
+<ul>
+<li>Con người dùng hệ thống kinh mạch tinh tế để làm bộ lọc thanh tẩy ma khí.</li>
+<li>Linh thú dung nạp tinh lực thuần khiết đó để phá vỡ gông cùm huyết mạch, dần dà ngưng tụ thành hình nhân dạng để cùng con người chia sẻ văn minh.</li>
+</ul>
+<h2>1.3. Thảm Kịch Huyết Ca & Sự Chia Cắt Thủy Tộc (Kỷ Thứ Ba - 500 Năm Trước)</h2>
+<p>Một chi tộc Siren dưới Rãnh Biển Tối bị tha hóa bởi tàn tích Hư Không, sử dụng ma âm thao túng hơn mười vạn thợ săn lục địa, biến họ thành con rối tàn sát lẫn nhau trong sự kiện "Đêm Trăng Máu".</p>
+<ul>
+<li>Sau thảm kịch, loài người ban bố "Lệnh Cấm Vực Thẳm".</li>
+<li>Tộc Nhân Ngư yêu chuộng hòa bình rút lui vào Vịnh San Hô Ánh Trăng, ký hiệp ước không xâm phạm với Đế quốc.</li>
+<li>Tộc Siren bị trục xuất xuống đáy Rãnh Hắc Ám, mang thân phận giống loài cấm kỵ, vừa bị căm ghét tột cùng, vừa là mục tiêu săn trộm đắt giá nhất chợ đen.</li>
+</ul>
+<p>________________</p>
+<h1 id="chap-2">CHƯƠNG 2: ĐỊA LÝ TOÀN CẢNH ĐẠI LỤC & CÁC ĐẠI CẤM VỰC TỬ VONG</h1>
+<p>Đại lục Aethelgard là một thế giới mở rộng lớn với địa hình biến đổi từ lục địa trù phú, quần đảo nhiệt đới, đầm lầy ma thuật cho đến các rãnh biển sâu thẳm và cấm địa tử vong:</p>
+<h2>2.1. Các Vùng Lãnh Thổ & Thành Bang Văn Minh</h2>
+<ul>
+<li>Đế Quốc Thần Thánh Valenor (Lục Địa Trung Tâm): Cường quốc quân sự và ma pháp lớn nhất. Thủ đô là Thánh Đô Lumina tráng lệ với những thánh đường đá trắng vút cao. Nơi đây coi trọng quý tộc thuần huyết, quản lý các hầm ngục tài nguyên và đặt ra các đạo luật khắt khe về khế thú.</li>
+<li>Thành Bang Thương Nghiệp Tự Do Port Solaria: Thành phố cảng thịnh vượng nằm ở ngã ba giao thương đại lục. Nơi đặt trụ sở Ngân hàng Ma Thuật, các phường buôn quốc tế và sàn đấu giá khế thú hợp pháp lớn nhất thế giới.</li>
+<li>Thảo Nguyên Thần Thú Kora: Vùng bình nguyên cỏ xanh bất tận trải dài về phía Đông. Lãnh địa của các đàn ngựa một sừng, Dực Mã có cánh, Centaur du mục và các đàn linh thú ăn cỏ khổng lồ.</li>
+<li>Quần Đảo Tự Do Vịnh Bạc: Hàng trăm hòn đảo đá vôi vô chính phủ, hang động ngầm và vịnh cướp biển. Sào huyệt của lính đánh thuê, thợ lặn săn cổ vật và các bang hội buôn lậu thú hiếm.</li>
+<li>Bán Đảo Sương Mù & Thị Trấn Cảng Oakhaven: Nằm dưới chân Học viện Kael-Varn, nơi giao thoa giữa rừng già và biển khơi; có chợ đen Hắc Thị, tửu quán thợ săn và lò rèn ma thuật.</li>
+</ul>
+<h2>2.2. Các Khu Vực Thám Hiểm Hoang Dã Mở</h2>
+<ul>
+<li>Rừng Già Nguyên Sinh Sylvanna (Vùng Săn Cấp D -> S): Rừng rậm cổ sinh bạt ngàn với nhiều phân tầng dã thú: Sói Băng Nguyệt, Huyết Hổ, Thần Hươu và các loài ma thực ăn thịt.</li>
+<li>Vách Đá Bão Lôi (Vùng Cấp B -> A): Dãy núi dựng đứng quanh năm bao phủ bởi lốc xoáy và sét đánh, nơi làm tổ của ưng thần, dực xà và quái thú hệ sấm gió.</li>
+<li>Vùng Đầm Lầy Độc Chướng Miasma (Vùng Cấp B -> S): Đầm lầy ngập mặn ẩm ướt đầy khí độc, bùn lún và sương mù ảo giác; nơi sinh sống của Hư Không Xà Nữ, Ma Ếch và thủy quái đầm lầy.</li>
+<li>Lãnh Nguyên Băng Giá Cực Bắc Niflheim (Vùng Cấp A -> S): Lãnh nguyên băng tuyết vĩnh cửu, nhiệt độ dưới âm 40 độ C; địa bàn của Cự Hùng Nham Băng, Băng Long Cổ Đại và Sói Tuyết khổng lồ.</li>
+<li>Vịnh San Hô Ánh Trăng: Vùng biển nông tĩnh lặng được bảo hộ bởi tộc Nhân Ngư, nơi nước biển phát sáng lung linh vào ban đêm và có các rạn san hô chữa lành.</li>
+</ul>
+<h2>2.3. Năm Đại Cấm Vực Tử Vong</h2>
+<p>Năm cấm vực chứa đựng những hiểm họa kinh hoàng nhất thế giới nhưng luôn thu hút các ngự thú sư liều lĩnh vì những bí mật và bảo vật vô giá:</p>
+<p>1. Rãnh Biển Tối Vô Tận (Vùng Cấm SSS - Vực Biển Sâu)</p>
+<ul>
+<li>Vị trí & Đặc điểm: Khe nứt đại dương sâu hơn 10.000 mét dưới đáy biển phía Nam. Nơi đây áp suất nghiền nát kim loại, bóng tối tuyệt đối và nhiệt độ đóng băng.</li>
+<li>Mối đe dọa sinh học: Địa bàn của Thần Thú Biển Sâu Leviathan Cổ Đại, thủy quái khổng lồ và chi tộc Siren Hắc Ám. Nơi đây vang vọng Khúc Ca Trầm Mặc khiến kẻ nghe thấy tự móc mắt hoặc lao mình xuống vực sâu làm mồi cho quái thú.</li>
+<li>Mồi nhử & Kho báu cấm:</li>
+<li>Trân Châu Tủy Biển: Tương truyền ngậm một viên có thể hô hấp vĩnh viễn dưới nước và gia tăng tuổi thọ thêm 300 năm.</li>
+<li>Hài cốt của Cổ Thần Biển Sâu: Nguồn khoáng chất ma thuật cực mạnh có thể giúp khế thú hệ thủy đột phá cảnh giới thần thoại.</li>
+<li>Truyền thuyết dân gian: "Nếu ngươi nghe thấy tiếng đàn hạc dưới đáy sóng ngầm, đừng quay đầu lại. Đó là lúc Siren đang đo ni đóng giày cho cỗ quan tài bằng nước của ngươi."</li>
+</ul>
+<p>2. Rừng Cây Huyết Tế (Vùng Cấm SS - Rừng Ma Quái Cổ Đại)</p>
+<ul>
+<li>Vị trí & Đặc điểm: Nằm sâu bên trong Rừng Già Sylvanna, nơi mặt đất biến thành màu đỏ thẫm và cây cối có mạch máu đập như tim người.</li>
+<li>Mối đe dọa sinh học: Cổ Ma Thụ ăn thịt ngàn năm, rễ cây săn mồi hút cạn sinh lực trong vài giây; sương mù màu hồng gây ảo giác tình dục và bạo lực cực độ, kích hoạt chu kỳ phát tình dã tính mất kiểm soát.</li>
+<li>Mồi nhử & Kho báu cấm:</li>
+<li>Cổ Thụ Huyết Nguyện: Tương truyền nếu hiến tế máu của một cặp đôi (hoặc chủ nhân và khế thú) vào gốc cây, cây sẽ ban cho một quả Thần Mộc giúp ràng buộc linh hồn vĩnh cửu không thể bị phá vỡ.</li>
+<li>Nhựa Cây Trường Sinh: Dược liệu tối thượng để cứu sống người vừa chết trong vòng 24 giờ.</li>
+<li>Truyền thuyết dân gian: "Những kẻ bước vào Rừng Cây Huyết Tế khi trở ra đều quên mất tên của chính mình, nhưng trên cổ họ luôn hằn sâu một vết cắn đỏ như máu tươi."</li>
+</ul>
+<p>3. Vết Nứt Hư Không Abyssal Rift (Vùng Cấm SSS - Vết Rách Không Gian)</p>
+<ul>
+<li>Vị trí & Đặc điểm: Một vết rách không gian đen ngòm lơ lửng giữa sa mạc đổ nát phía Tây, ma lực không gian rò rỉ làm đảo lộn trọng lực và thời gian.</li>
+<li>Mối đe dọa sinh học: Dị chủng Hư Không, quái vật không có hình dạng cố định, nuốt chửng ma lực và linh hồn. Không gian tại đây liên tục co rút, dịch chuyển tức thời và xé rách cơ thể kẻ xâm nhập.</li>
+<li>Mồi nhử & Kho báu cấm:</li>
+<li>Tinh Thể Không Gian Hư Vô: Vật liệu duy nhất để chế tạo pháp bảo dịch chuyển tức thời xuyên lục địa và mở rộng sức chứa khế ước linh hồn.</li>
+<li>Bí kíp cấm thuật Không Gian & Thời Gian cổ xưa.</li>
+<li>Truyền thuyết dân gian: "Thời gian trong Vết Nứt là một vòng lặp độc ác. Ngươi có thể gặp lại chính xác thi thể của mình từ một ngàn năm trước đang nhìn ngươi mỉm cười."</li>
+</ul>
+<p>4. Hỏa Diệm Sơn Luyện Ngục (Vùng Cấm S - Núi Lửa Ma Pháp)</p>
+<ul>
+<li>Vị trí & Đặc điểm: Quần thể núi lửa hoạt động vĩnh viễn ở biên giới phương Bắc. Không khí tràn ngập tro tàn ma thuật và lưu huỳnh, nham thạch nóng hàng ngàn độ C chảy thành sông.</li>
+<li>Mối đe dọa sinh học: Hỏa Long Cổ Đại, Hỏa Tinh Linh cuồng bạo và Huyết Hổ Nham Thạch cấp Chúa Tể. Bão lửa ma thuật quét qua có thể thiêu rụi một đạo quân tinh anh trong chớp mắt.</li>
+<li>Mồi nhử & Kho báu cấm:</li>
+<li>Tàn Hỏa Thăng Thần: Ngọn lửa thần bí giúp khế thú hệ hỏa phá vỡ cảnh giới, tiến hóa lên cấp bậc Thần Thoại.</li>
+<li>Hỏa Tinh Tâm Ma: Đá quý chứa nguồn nhiệt lượng vô hạn, nguyên liệu đúc vũ khí thần cấp.</li>
+<li>Truyền thuyết dân gian: "Mỗi một viên đá đỏ trên Hỏa Diệm Sơn đều từng là trái tim của một ngự thú sư bị chính khế thú hệ hỏa của mình thiêu rụi khi khế ước sụp đổ."</li>
+</ul>
+<p>5. Phế Tích Cổ Đô Chìm Đắm Ys (Vùng Cấm S - Vùng Đất Bị Nguyền Rủa)</p>
+<ul>
+<li>Vị trí & Đặc điểm: Tàn tích của nền văn minh cổ đại hoàng kim bị nhấn chìm dưới lòng hồ sương mù. Các cung điện cẩm thạch phủ đầy rêu phong và bị nguyền rủa bởi ma pháp bóng tối.</li>
+<li>Mối đe dọa sinh học: Oán linh của các ngự thú sư cổ đại, Khắc Ấn Thần Thú hóa đá ngàn năm thức tỉnh săn lùng kẻ sống; vùng cấm ma thuật khiến mọi pháp thuật và vòng tròn triệu hồi bị vô hiệu hóa hoàn toàn.</li>
+<li>Mồi nhử & Kho báu cấm:</li>
+<li>Thư viện Tri thức Thần Khế Thất Truyền: Ghi chép phương pháp thuần hóa các thần thú cổ đại và bí mật khế ước không cần ma lực (cám dỗ chết người đối với học sinh quý tộc sắp bị trượt tốt nghiệp).</li>
+<li>Di vật hoàng gia và trang bị cổ ngữ cấp Thần.</li>
+<li>Truyền thuyết dân gian: "Đừng bao giờ chạm vào những bức tượng đá hình người đang ôm thú cưng trong phế tích Ys. Chúng không phải là đá khắc, mà là những kẻ tham lam bị biến thành tượng vĩnh viễn."</li>
+</ul>
+<p>________________</p>
+<h1 id="chap-3">CHƯƠNG 3: CƠ CHẾ TIẾN HÓA ĐA NHÁNH</h1>
+<p>Quá trình tiến hóa của linh thú trong thế giới Kael-Varn không đi theo một đường thẳng tuyến tính đơn điệu, mà rẽ nhánh phụ thuộc trực tiếp vào phương pháp nuôi dưỡng, môi trường chiến đấu, ma dược hấp thụ và sự tương tác cảm xúc với chủ nhân:</p>
+<h2>3.1. Cây Tiến Hóa 3 Nhánh Điển Hình: Tộc Thủy Ngư</h2>
+<ul>
+<li>Dạng Ban Đầu: Ấu Ngư Linh Thể (Rank E - Dạng cá phát sáng bơi trong cầu nước ma pháp).</li>
+<li>Nhánh 1: Thánh Khiết Trị Liệu -> Nhân Ngư San Hô (Rank B - A) -> Thánh Nữ Nhân Ngư Thần Hải (Rank S).</li>
+<li>Đặc điểm: Vảy cá màu ngọc bích lấp lánh, tính cách dịu dàng, e thẹn; nước mắt hóa ngọc trị thương, giọng hát thanh tẩy tâm trí và hồi phục ma lực cực mạnh cho chủ nhân.</li>
+<li>Nhánh 2: Ma Âm Hắc Ám -> Dạ Ngư Uyên Sâu (Rank A) -> Thần Ma Thâm Uyên (Rank S - SS).</li>
+<li>Đặc điểm: Vảy đen ánh tím, móng vuốt sắc nhọn, tính cách chiếm hữu điên cuồng, tàn nhẫn; giọng hát mê hoặc điều khiển tâm trí kẻ thù, dùng máu tươi và dục vọng để gia tăng sức mạnh.</li>
+<li>Nhánh 3: Thể Thuật Hộ Vệ Hải Thú -> Thiết Kình Vệ Binh (Rank B - A) -> Cự Kình Ba Đào Hải Thần (Rank S - SSS).</li>
+<li>Đặc điểm: Lớp giáp xương cứng cáp như kim cương, vóc dáng cao lớn oai phong, tính cách trầm tĩnh trung thành; sức mạnh va chạm vật lý nghiền nát chiến hạm, tạo khiên chắn sóng thần bảo vệ chủ nhân.</li>
+</ul>
+<h2>3.2. Cây Tiến Hóa 3 Nhánh Điển Hình: Tộc Sói Băng</h2>
+<ul>
+<li>Dạng Ban Đầu: Sương Lang Con (Rank E - D).</li>
+<li>Nhánh 1: Nguyệt Quang Băng Giá -> Sương Lang Nguyệt Ảnh (Rank B - A) -> Nguyệt Thần Lang Vương (Rank S).</li>
+<li>Đặc điểm: Lông bạc ánh trăng, tốc độ nhanh như tia chớp, điều khiển băng giá tuyệt đối; khi hóa người mang vẻ đẹp lạnh lùng quý phái, đôi tai sói dựng thẳng nhạy cảm.</li>
+<li>Nhánh 2: Hắc Ám Ám Sát -> Ma Lang Bóng Đêm (Rank A) -> Vô Diện Dạ Lang (Rank S - SS).</li>
+<li>Đặc điểm: Lẩn khuất trong bóng tối, sát thương bạo kích chí mạng; tính cách trầm mặc, tuyệt đối vâng lời nhưng ngấm ngầm ghen tuông với bất kỳ ai tiếp cận chủ nhân.</li>
+<li>Nhánh 3: Cuồng Huyết Đấu Sĩ -> Huyết Lang Chiến Tướng (Rank B - A) -> Cuồng Bạo Thao Thiết Lang (Rank S).</li>
+<li>Đặc điểm: Cơ bắp cuồn cuộn, mắt đỏ như máu, càng bị thương sức mạnh càng tăng vọt; khi hóa người có thể hình vạm vỡ, tính cách bộc trực, thích thị uy sức mạnh.</li>
+</ul>
+<p>________________</p>
+<h1 id="chap-4">CHƯƠNG 4: BÁCH THÚ THẦN KHẾ TOÀN THƯ</h1>
+<p>Thế giới Kael-Varn sở hữu hệ sinh thái dã thú phong phú được phân cấp từ Rank E đến Rank SSS:</p>
+<h2>4.1. Hệ Thống Phân Cấp Rank Dã Thú</h2>
+<ul>
+<li>Rank E: Thú cảnh, không có khả năng chiến đấu (Thỏ Tuyết, Mèo Bông Tinh Linh, Chim Ca Hát).</li>
+<li>Rank D: Chiến đấu sơ cấp, phản xạ nhanh (Chó Săn Lửa, Chuột Sét, Rắn Độc Đầm Lầy).</li>
+<li>Rank C: Nguy hiểm, có kỹ năng nguyên tố cơ bản (Sói Rừng, Gấu Nham Thạch, Ưng Gió).</li>
+<li>Rank B: Tinh anh, bắt đầu có trí tuệ và dấu hiệu thức tỉnh hình người (Sương Lang, Hổ Răng Kiếm, Cá Heo Âm Ba).</li>
+<li>Rank A: Cực hiếm, sức mạnh sánh ngang một đội quân tinh nhuệ (Nhân Ngư San Hô, Lam Ưng Lôi Đình, Bạch Lộc Phỉ Thúy).</li>
+<li>Rank S: Chúa tể một vùng lãnh thổ, trí tuệ vượt bậc con người (Dạ Ngư Uyên Sâu, Cửu Vĩ Huyễn Hồ, Băng Long Cổ Đại).</li>
+<li>Rank SS - SSS: Thần thoại, có khả năng thay đổi thời tiết và hủy diệt quốc gia (Thần Thú Biển Sâu Cự Kình, Hỏa Long Luyện Ngục, Ma Thụ Huyết Nguyện).</li>
+</ul>
+<h2>4.2. Bốn Nhóm Chủng Loài Tiêu Biểu</h2>
+<ul>
+<li>Nhóm Thủy Tộc & Vực Sâu:</li>
+<li>Nhân Ngư San Hô: Nữ/Nam tính, đuôi cá óng ánh chuyển thành đôi chân thon dài khi lên bờ; tính cách thanh khiết, dễ xúc động.</li>
+<li>Siren Dạ Khúc Uyên Sâu: Thủy quái biển sâu quyến rũ chết người; giọng hát ma mị, móng vuốt có nọc độc gây tê liệt và kích thích hưng phấn tột cùng.</li>
+<li>Cự Kình Hộ Vệ: Thần thú biển sâu khổng lồ, khi hóa người là những chiến binh hộ vệ trầm lặng, đáng tin cậy.</li>
+<li>Sứa Tinh Tú: Cơ thể trong suốt phát quang lơ lửng, kỹ năng phong tỏa không gian và chữa lành tâm linh.</li>
+<li>Nhóm Thú Rừng & Lục Địa:</li>
+<li>Sương Lang Nguyệt Ảnh: Loài sói tuyết kiêu hãnh; khi hóa người có mái tóc bạch kim, ánh mắt sắc lạnh và bản năng bảo vệ bạn đời cực kỳ mãnh liệt.</li>
+<li>Liệt Diễm Xích Hổ: Hổ lửa cuồng nhiệt, tính cách nóng nảy bộc trực, thích va chạm thể xác và thị uy sức mạnh.</li>
+<li>Bạch Lộc Phỉ Thúy: Hươu thần rừng già, mang lại sự sống và thảo dược quý; tính cách nhút nhát, thanh tao.</li>
+<li>Hắc Báo U Minh: Sát thủ bóng đêm; ngoài lạnh trong nóng, trung thành tuyệt đối nhưng hay giấu kín cảm xúc.</li>
+<li>Nhóm Bầu Trời & Không Cực:</li>
+<li>Lam Ưng Lôi Đình: Chúa tể bầu trời; sở hữu đôi cánh sấm sét, tính cách kiêu ngạo, chỉ khuất phục trước kẻ mạnh hơn mình.</li>
+<li>Cú Mèo Thời Gian Tinh Không: Trí tuệ uyên bác, có khả năng nhìn thấy thoáng qua các nhánh tương lai; thích đọc sách ma pháp.</li>
+<li>Nhóm Thần Thoại & Dị Biến:</li>
+<li>Hắc Xà Mãng Xà Hư Không: Rắn khổng lồ mang huyết mạch Basilisk; ánh mắt có thể hóa đá linh hồn, tính cách quỷ quyệt, thích trêu chọc chủ nhân.</li>
+<li>Cửu Vĩ Huyễn Hồ: Hồ ly chín đuôi ma mị; bậc thầy ảo thuật và thao túng cảm xúc, đa nhân cách khó lường.</li>
+</ul>
+<p>________________</p>
+<h1 id="chap-5">CHƯƠNG 5: SINH HỌC DÃ TÍNH, CƠ CHẾ GIAO HÒA TINH LỰC & TÌNH CẢM THÂN MẬT</h1>
+<h2>5.1. Đặc Điểm Thể Chất & Phản Xạ Dã Tính Sau Khi Hóa Người</h2>
+<p>Dù đã ngưng tụ thành hình nhân dạng hoàn chỉnh, các linh thú vẫn giữ lại những đặc điểm giải phẫu và phản xạ sinh học dã tính đặc trưng:</p>
+<ul>
+<li>Dấu Vết Dã Tính Tồn Tại Vĩnh Viễn:</li>
+<li>Đôi tai thú nhạy cảm giật nhẹ theo âm thanh; đuôi mềm mại biểu lộ cảm xúc vô thức (vẫy đuôi khi vui, xù lông khi giận, quấn chặt lấy chân/eo chủ nhân khi khao khát tiếp xúc).</li>
+<li>Mắt thú co giãn đồng tử trong bóng tối; móng tay có thể thu vào hoặc kéo dài sắc nhọn khi bị kích động.</li>
+<li>Thủy tộc có mang cá ẩn sau tai phát sáng mờ ảo khi kích thích, vảy cá li ti lấp lánh dọc xương sống và hông eo.</li>
+<li>Tuyến Mùi Hương & Pheromone Dã Tính:</li>
+<li>Mỗi linh thú sở hữu một mùi hương sinh học đặc trưng (hương tuyết lạnh, mùi cỏ cháy, xạ hương hổ phách, mùi muối biển và hoa dạ thảo độc).</li>
+<li>Pheromone này sẽ bùng nổ nồng nặc khi chúng bước vào trạng thái xúc động, thèm muốn tinh lực hoặc bước vào chu kỳ sinh học.</li>
+</ul>
+<h2>5.2. Ba Tầng Tiếp Xúc Thể Xác & Giao Hòa Tinh Lực</h2>
+<p>Ma lực và tinh lực giữa chủ nhân và khế thú không thể truyền dẫn qua không khí đơn thuần, mà đòi hỏi sự tiếp xúc thể xác từ nông đến sâu:</p>
+<ul>
+<li>Tầng 1: Tiếp Xúc Cảm Ứng Bề Mặt Da</li>
+<li>Nắm tay, ôm ấp, vuốt ve các vùng nhạy cảm dã tính (gốc tai, dọc sống lưng, chóp đuôi, vây ngực).</li>
+<li>Hiệu quả: Hồi phục ma lực cơ bản, trấn an thần kinh dã thú đang bồn chồn lo lắng.</li>
+<li>Tầng 2: Dung Nạp Thân Mật Qua Dịch Thể</li>
+<li>Trao đổi nước bọt qua những nụ hôn sâu, liếm láp các vết thương chiến đấu, chia sẻ máu tươi qua vết rạch nhỏ trên ngón tay.</li>
+<li>Hiệu quả: Tăng tốc độ hồi phục vết thương nặng gấp 5 lần, kích hoạt tiến hóa tạm thời trong chiến đấu.</li>
+<li>Tầng 3: Đánh Dấu Cắn Thể Xác & Giao Hòa Linh Hồn Sâu Sắc</li>
+<li>Răng nanh cắn ngập vào tuyến gáy (đối với thú lục địa) hoặc cắn vào xương quai xanh/khớp mang (đối với thủy tộc), truyền thẳng tinh lực thuần khiết vào dòng máu đối phương.</li>
+<li>Hiệu quả: Đạt tới trạng thái "Đồng Điệu Tuyệt Đối", ma lực bùng nổ gấp nhiều lần; đồng thời in sâu ấn ký sở hữu thể xác và linh hồn lên nhau.</li>
+</ul>
+<h2>5.3. Sinh Học Chu Kỳ Phát Tình & Động Dục Dã Tính</h2>
+<p>Chu kỳ sinh học dã tính là hiện tượng sinh lý tự nhiên không thể cưỡng lại của linh thú khi đạt tới cấp độ hóa người:</p>
+<ul>
+<li>Tần suất & Kích hoạt: Diễn ra định kỳ mỗi 3 tháng một lần (kéo dài từ 3 đến 7 ngày), hoặc kích hoạt đột ngột vào các đêm Trăng Tròn, Thủy Triều Đỏ, hoặc khi ma lực đột phá.</li>
+<li>Biểu hiện thể chất: Thân nhiệt tăng cao đột ngột (Sốt Ma Lực), đồng tử giãn to mất kiểm soát lý trí, tuyến pheromone tỏa hương nồng nặc khắp không gian phòng kín.</li>
+<li>Bản năng đòi hỏi: Linh thú hoàn toàn bị chi phối bởi bản năng muốn được chủ nhân chạm vào, ôm siết và chia sẻ tinh lực. Chúng sẽ bồn chồn cào cấu ga giường, quấn lấy chủ nhân, phát ra những tiếng rên rỉ trầm đục cầu xin sự xoa dịu.</li>
+<li>Thuốc Ức Chế Dã Tính: Một loại ma dược đắng chát do Học viện cung cấp để kìm hãm chu kỳ. Tuy nhiên, việc lạm dụng thuốc ức chế sẽ làm teo nhỏ kinh mạch ma lực, khiến linh thú u uất, suy giảm tuổi thọ và có nguy cơ phát điên bạo loạn bất cứ lúc nào.</li>
+</ul>
+<h2>5.4. Sắc Thái Cảm Xúc Dã Tính Của Từng Loài</h2>
+<ul>
+<li>Thủy Tộc (Nhân Ngư & Dạ Ngư):</li>
+<li>Siren: Tình cảm mang tính chiếm hữu độc hại, ghen tuông tột cùng; thích dùng giọng hát ma mị thôi miên chủ nhân, muốn giam cầm chủ nhân dưới đáy hồ nước để làm của riêng.</li>
+<li>Nhân Ngư: Tình cảm thanh khiết, tận hiến và e ấp; sẵn sàng rơi lệ thành ngọc để đổi lấy một nụ cười của chủ nhân.</li>
+<li>Thủy Tộc (Nhân Ngư & Dạ Ngư):</li>
+<li>Bản Năng Một Bạn Đời Duy Nhất: Loài sói một khi đã nhận chủ nhân làm bạn đời thể xác sẽ tuyệt đối chung thủy trọn đời. Nếu chủ nhân qua đời hoặc phản bội, chúng sẽ tuyệt thực chết theo hoặc hóa điên tàn sát.</li>
+<li>Hổ và Báo: Thích khẳng định chủ quyền bằng cách để lại các vết cắn và vết cào rướm máu trên da thịt chủ nhân, coi đó là vòng cổ đánh dấu lãnh thổ.</li>
+</ul>
+<h2>5.5. Cấm Kỵ Xã Hội & Rào Cản Luân Lý</h2>
+<ul>
+<li>Định kiến đế quốc: Xã hội quý tộc Valenor coi việc chủ nhân nảy sinh tình cảm yêu đương hoặc phát sinh quan hệ thể xác với thú hóa người là "sự đồi trụy dã man làm hoen ố huyết thống cao quý".</li>
+<li>Bi kịch tuổi thọ: Linh thú cấp cao có tuổi thọ hàng trăm năm, trong khi con người phàm trần chỉ sống được vài thập kỷ. Mối tình giữa người và thú luôn bị ám ảnh bởi nỗi sợ hãi chia lìa sinh tử.</li>
+</ul>
+<p>________________</p>
+<h1 id="chap-6">CHƯƠNG 6: HỌC VIỆN KAEL-VARN & HỆ SINH THÁI ĐỜI SỐNG</h1>
+<h2>6.1. Không Gian Kiến Trúc & Phân Tầng Ký Túc Xá</h2>
+<p>Học viện Kael-Varn được xây dựng trên một bán đảo cô lập hướng ra Biển Đen. Khuôn viên chia cắt rõ rệt giữa hai thế giới:</p>
+<ul>
+<li>Tòa Tháp Kim Cương (Dành cho Quý tộc): Lộng lẫy xa hoa, phòng ốc lát đá cẩm thạch trắng, có hồ bơi nước biển tư gia cho thủy tộc, sân thượng đón nắng cho phi hành thú và người hầu phục vụ 24/7.</li>
+<li>Dãy Tro Tàn (Dành cho Dân nghèo & Học bổng): Nằm sát vách đá lạnh lẽo ẩm thấp, tường đá rêu phong nứt nẻ; học sinh phải tự tìm củi sưởi ấm và ngủ chung giường gỗ thô sơ với khế thú của mình.</li>
+</ul>
+<h2>6.2. Các Cặp Đôi Điển Hình Trong Trường</h2>
+<ul>
+<li>Cặp Đôi Hội Trưởng & Sương Lang:</li>
+<li>Hội trưởng Hội Học Sinh: Một thiếu gia quý tộc lạnh lùng, danh gia vọng tộc nhưng mang trong mình căn bệnh suy kiệt kinh mạch bẩm sinh.</li>
+<li>Khế thú: Nữ Sương Lang kiêu hãnh; ban ngày đóng vai cận vệ câm lặng, ban đêm dùng cơ thể ấm nóng và ma lực băng tuyết để xoa dịu những cơn sốt co giật của chủ nhân. Mối tình ngọt ngào nhưng bị gia tộc ngăn cấm dữ dội.</li>
+<li>Cặp Đôi Thiếu Gia Phóng Đãng & Nam Siren Biến Dị:</li>
+<li>Thiếu gia nhà tài phiệt ngạo mạn, quen dùng tiền bạc mua chuộc mọi thứ.</li>
+<li>Khế thú: Một Siren đực mang dòng máu độc; ngấm ngầm dùng ảo thanh thôi miên khiến thiếu gia ngày càng phụ thuộc vào mình, biến mối quan hệ chủ tớ thành trò chơi thao túng tâm lý đầy nguy hiểm.</li>
+<li>Cặp Đôi Giáo Sư Độc Dược & Nữ Nhân Ngư Hóa Thạch:</li>
+<li>Giáo sư đứng tuổi bị ám ảnh bởi việc hồi sinh người tình Nhân Ngư đã hy sinh trong quá khứ, sẵn sàng tiến hành các thí nghiệm cấm kỵ bất chấp sự trừng phạt của Hội đồng.</li>
+</ul>
+<p>________________</p>
+<h1 id="chap-7">CHƯƠNG 7: DÀN PHẢN DIỆN Ý THỨC HỆ ĐA CHIỀU</h1>
+<h2>7.1. Valerius Vance - Kẻ Cứu Thế Sa Đọa Mang Nỗi Đau Câm Lặng</h2>
+<ul>
+<li>Xuất thân: Cựu Thủ khoa xuất sắc nhất lịch sử Học viện Kael-Varn, nguyên Đội trưởng Đội Hiệp Sĩ Hộ Vệ Đế Quốc.</li>
+<li>Tâm lý & Động cơ: Từng là một người tràn đầy lòng trắc ẩn và lý tưởng bảo vệ kẻ yếu. Năm 22 tuổi, anh tận mắt chứng kiến Nữ Nhân Ngư tri kỷ của mình bị cha ruột (Thống Chế Morgan) mổ sống để lấy tim tinh luyện đan dược trường thọ cho Hoàng Đế.</li>
+<li>Lý tưởng cực đoan: Valerius tin rằng loài người là mầm mống tha hóa không thể cứu rỗi. Kế hoạch của anh là kích hoạt "Thủy Triều Hư Không", giải phóng toàn bộ ma thú và dìm đại lục vào biển nước để tái sinh một thế giới thuần khiết không còn sự bóc lột.</li>
+<li>Vẻ ngoài & Phong thái: Mái tóc xám tro, ánh mắt u buồn thăm thẳm; nói năng nhỏ nhẹ, lịch thiệp nhưng ra tay tàn nhẫn không chút chần chừ. Luôn đeo chiếc vòng cổ làm từ vảy san hô khô héo của người tình quá cố.</li>
+</ul>
+<h2>7.2. Ignis Riven - Đồ Tể Cuồng Loạn</h2>
+<ul>
+<li>Xuất thân: Thủ lĩnh bang cướp biển Huyết Nha, kẻ đào tẩu khỏi đấu trường sinh tử Đế quốc.</li>
+<li>Động cơ: Tôn thờ bạo lực và sức mạnh tuyệt đối; coi khế ước linh thần là trò hề yếu đuối, chỉ tin vào roi da, xiềng xích ma thuật và việc bẻ gãy ý chí của mọi sinh linh.</li>
+</ul>
+<h2>7.3. Thống Chế Morgan Vance - Thiết Huyết Đế Chế</h2>
+<ul>
+<li>Xuất thân: Tổng Tư Lệnh Quân Đội Valenor, cha đẻ của Valerius Vance.</li>
+<li>Động cơ: Chủ nghĩa dân tộc cực đoan; coi dã thú và thủy tộc chỉ là tài nguyên chiến tranh phục vụ cho sự thống trị tối cao của loài người.</li>
+</ul>
+<p>________________</p>
+<h1 id="chap-8">CHƯƠNG 8: HỆ THỐNG PHÂN CẤP XÃ HỘI, GIAI TẦNG & ĐỊA VỊ PHÁP LÝ</h1>
+<h2>8.1. Năm Đẳng Cấp Xã Hội Đế Quốc</h2>
+<ul>
+<li>Đẳng Cấp 1: Hoàng Tộc & Đại Quý Tộc Thuần Huyết: Nắm giữ quyền lực chính trị tối cao, sở hữu các khế thú thần thoại cấp Chúa Tể (Long tộc, Phượng hoàng, Dực Sư, hoàng tộc Nhân Ngư và Dạ Ngư).</li>
+<li>Đẳng Cấp 2: Quý Tộc Cấp Thấp & Tài Phiệt Thương Nghiệp: Sở hữu đất đai, tàu buôn và hầm mỏ; dùng tiền bạc mua thú hiếm từ chợ đen để nâng cao vị thế.</li>
+<li>Đẳng Cấp 3: Pháp Sư & Ngự Thú Sư Tinh Anh: Tầng lớp trí thức và lực lượng chiến đấu nòng cốt của xã hội, được kính trọng dựa trên tài năng thực chiến.</li>
+<li>Đẳng Cấp 4: Thường Dân & Thị Dân Hải Cảng: Nông dân, thợ rèn, thủy thủ; chỉ được phép ký khế ước với các loài thú nuôi lao động thông thường (như chó săn, ngựa kéo, miêu linh).</li>
+<li>Đẳng Cấp 5: Dân Ngoại Tộc & Bán Thú Bị Khinh Rẻ: Nô lệ, tội phạm đào tẩu và những người mang dòng máu lai thú; bị tước bỏ quyền công dân, sống chui rủi ở các khu ổ chuột.</li>
+</ul>
+<h2>8.2. Địa Vị Pháp Lý Của Thú Hóa Người</h2>
+<ul>
+<li>Đạo luật Đế quốc quy định: Dù đã hóa thành hình người hoàn chỉnh, khế thú về mặt pháp lý vẫn chỉ là "Tài sản thuộc quyền sở hữu của chủ nhân".</li>
+<li>Không có quyền tài sản độc lập, không được phép khởi kiện con người trước tòa án. Mọi tội lỗi của khế thú đều do chủ nhân chịu trách nhiệm, và bất kỳ ai giết hại thú hóa người chỉ phải bồi thường tiền bạc tương đương giá trị tài sản.</li>
+</ul>
+<h2>8.3. Bốn Phe Phái Quyền Lực Đại Lục</h2>
+<ul>
+<li>Hiệp Hội Ngự Thú Đế Quốc: Tổ chức chính thống giám sát mọi khế ước, duy trì trật tự pháp luật và bảo vệ quyền lợi của giới quý tộc.</li>
+<li>Tiên Phong Giải Phóng: Phong trào ngầm do Valerius hậu thuẫn, đấu tranh đòi quyền bình đẳng tuyệt đối và tự do cho mọi giống loài thú hóa người.</li>
+<li>Hắc Thị Hắc Diệu Thạch: Mạng lưới tội phạm xuyên quốc gia buôn bán nô lệ thú hiếm, ma dược kích dục và vũ khí cấm kỵ.</li>
+<li>Giáo Phái Mẫu Thần Biển Sâu: Nhóm cuồng giáo tôn thờ Cổ Thần Đại Dương, chuẩn bị cho ngày Thần Thú Leviathan thức tỉnh nhấn chìm mặt đất.</li>
+</ul>
+<p>________________</p>
+<h1 id="chap-9">CHƯƠNG 9: CẨM NANG KHỞI TẠO TỰ DO DÀNH CHO {{USER}}</h1>
+<h2>9.1. Mười Lựa Chọn Xuất Thân</h2>
+<p>Người chơi tự do định hình danh tính khởi đầu của mình thông qua 10 nhánh xuất thân phong phú:</p>
+<ul>
+<li>1. Quý Tộc Sa Sút: Mang dòng máu quý tộc cổ xưa nhưng gia tộc phá sản, bước vào học viện với một linh thú ốm yếu và món nợ khổng lồ trên lưng.</li>
+<li>2. Học Giả Dãy Tro Tàn: Sinh viên nghèo đỗ thủ khoa nhờ học bổng, tinh thông lý thuyết ma pháp nhưng bị giới quý tộc khinh miệt, cô lập.</li>
+<li>3. Kẻ Giữ Thú Nghèo Khó: Làm công việc dọn dẹp chuồng thú ở trại nuôi dưỡng từ nhỏ, am hiểu tập tính động vật và có khả năng giao tiếp đặc biệt với thú hoang dã.</li>
+<li>4. Thợ Săn Tiền Thưởng Vùng Hoang Dã: Từng sinh tồn một mình trong các khu rừng cấm, kinh nghiệm sinh tồn dạn dày, vết sẹo đầy mình.</li>
+<li>5. Cựu Tín Đồ Tà Giáo: Kẻ trốn chạy khỏi Giáo Phái Mẫu Thần Biển Sâu, mang theo những bí thuật hắc ám và bị giáo phái ráo riết truy sát.</li>
+<li>6. Kẻ Đào Tẩu Khỏi Pháp Trường: Tội phạm vượt ngục mạo danh một học sinh đã chết để trà trộn vào học viện tìm nơi ẩn náu.</li>
+<li>7. Kẻ Đào Bới Phế Tích Cổ: Say mê khảo cổ học và cổ vật, sở hữu mảnh bản đồ dẫn tới một trong 5 đại cấm vực.</li>
+<li>8. Gián Điệp Đế Quốc Cài Cắm: Làm việc bí mật cho Thống Chế Morgan để giám sát các sinh viên nghi vấn và thế lực ngầm trong trường.</li>
+<li>9. Dị Chủng Bán Thú Bị Ruồng Bỏ: Mang dòng máu lai giữa người và thú, phải dùng ma pháp che giấu tai/đuôi của mình để tránh bị bắt làm nô lệ.</li>
+<li>10. Kẻ Chuyển Sinh Mất Trí Nhớ: Tỉnh dậy trên bờ biển Oakhaven mà không có bất kỳ ký ức nào về quá khứ, chỉ mang theo một viên đá phát sáng bí ẩn.</li>
+</ul>
+<h2>9.2. Cơ Chế Cộng Hưởng Thú Ngẫu Nhiên Bí Ẩn</h2>
+<p>Không có danh sách thú cố định cho người chơi lựa chọn. Linh thú đồng hành sẽ tự động xuất hiện ngẫu nhiên dựa trên:</p>
+<ul>
+<li>Hồ sơ tính cách của người chơi (tàn nhẫn, mưu mẹo, dịu dàng, liều lĩnh, thờ ơ).</li>
+<li>Hành động mở đầu và lời thoại đầu tiên trong chiến dịch.</li>
+<li>Linh thú có thể là một con thú lai kỳ dị bị thương trong bụi rậm, một sinh vật thủy tộc kỳ lạ mắc cạn sau bão, hoặc một khối năng lượng chưa định hình tự tìm đến người chơi.</li>
+</ul>
+<h2>9.3. Tự Do Tuyệt Đối Về Tuyến Tình Cảm</h2>
+<p>Người chơi hoàn toàn không bị ép buộc phải yêu đương với khế thú:</p>
+<ul>
+<li>Nhánh 1: Đồng Đội Tri Kỷ Thuần Khiết: Kề vai sát cánh chiến đấu như những người đồng chí tin cậy, không vướng bận tình cảm thể xác.</li>
+<li>Nhánh 2: Thực Dụng Khế Ước Đôi Bên Cùng Có Lợi: Xem nhau như công cụ sinh tồn và trao đổi quyền lợi sòng phẳng.</li>
+<li>Nhánh 3: Dâng Hiến Tình Cảm & Linh Hồn: Gắn kết thể xác sâu sắc, chia sẻ chu kỳ phát tình và yêu thương say đắm vượt qua định kiến xã hội.</li>
+<li>Nhánh 4: Cạnh Tranh & Kình Địch Cay Đắng: Luôn tranh cãi, khiêu khích và tìm cách chiếm thế thượng phong lẫn nhau trong mọi tình huống (đặc biệt nếu vướng duyên nợ tiền kiếp).</li>
+</ul>
+<h2>9.4. Tùy Chọn Ma Lực & Con Đường Phát Triển</h2>
+<ul>
+<li>Người chơi có thể chọn xuất thân có ma lực vô tận hoặc hoàn toàn không có ma lực, buộc phải bù đắp bằng trí tuệ, mưu mẹo, cạm bẫy độc dược và thể thuật đỉnh cao.</li>
+</ul>
+<p>________________</p>
+<h1 id="chap-10">CHƯƠNG 10: KINH TẾ, THỜI TRANG & ĐỜI SỐNG THƯƠNG MẠI</h1>
+<h2>10.1. Hệ Thống Tiền Tệ & Tỷ Giá Hối Đoái</h2>
+<p>Thế giới Aethelgard sử dụng hệ thống kinh tế ba tầng:</p>
+<ul>
+<li>Đồng Solis Vàng (Đế Quốc): Đơn vị tiền tệ kim loại phổ thông của lục địa. (1 Solis = 100 Bạc = 10.000 Đồng).</li>
+<li>Tinh Thể Aether: Tiền tệ ma thuật cao cấp dùng để giao dịch ma đạo cụ, linh dược quý hiếm và đấu giá khế thú cấp cao. (1 Aether = 1.000 Solis).</li>
+<li>Vỏ Sò Thần Hải: Đồng tiền vỏ xà cừ phát quang do tộc Nhân Ngư phát hành, chỉ có giá trị tại các khu chợ ven biển, đảo tự do và chợ đen Thủy Triều Đen.</li>
+</ul>
+<h2>10.2. Thời Trang Đồng Phục & May Đo Cho Thú Hóa Người</h2>
+<p>Đồng phục Học viện Kael-Varn được thiết kế đặc thù để thích ứng với giải phẫu cơ thể lai thú:</p>
+<ul>
+<li>Đồng phục 4 Phân Khoa:</li>
+<li>Khoa Thủy Tộc & Trị Liệu: Áo choàng lụa tơ biển chống thấm nước, viền ngọc trai óng ánh.</li>
+<li>Khoa Thể Thuật & Thú Quyền Lục Địa: Áo giáp da dã thú gọn gàng, tăng cường độ co giãn tại các khớp cơ bắp.</li>
+<li>Khoa Phong Dực & Bầu Trời: Áo khoác lông vũ siêu nhẹ, có rãnh thoát khí khi bay lượn trên cao.</li>
+<li>Khoa Cấm Kỵ & Dị Biến: Áo choàng dài màu xám đen phủ kín người, cài huy hiệu xương rồng cổ xưa.</li>
+<li>Cấu Trúc May Đo Độc Bản:</li>
+<li>Rãnh xẻ lưng và khuy bấm đặc biệt để giải phóng đôi cánh hoặc đuôi xù mà không làm rách áo.</li>
+<li>Mũ trùm đầu khoét hai lỗ chuyên dụng bọc nhung mềm cho tai sói, tai mèo hoặc sừng hươu.</li>
+<li>Đầm dạ hội xẻ tà cao hoặc trang phục bơi ma thuật tự co giãn khi thủy tộc biến đổi giữa đôi chân và đuôi cá.</li>
+</ul>
+<h2>10.3. Đời Sống Thương Mại & Chợ Đen Oakhaven</h2>
+<ul>
+<li>Đại Lộ Oakhaven: Khu phố sầm uất với các tiệm may đo, xưởng rèn thần binh, tiệm ma dược thảo mộc và quán trọ lữ khách.</li>
+<li>Chợ Đen Thủy Triều Đen: Nằm sâu trong hang động ngầm thủy triều rút; nơi mua bán trứng ma thú bất hợp pháp, thuốc ức chế phát tình lậu và các dịch vụ cầm cố nô lệ thú cấm.</li>
+</ul>
+<h2>10.4. Mạng Lưới Bưu Chính & Bảy Tầng Liên Lạc</h2>
+<ul>
+<li>1. Thư Gấp Hạc Truyền Âm: Giấy ma thuật gấp hình chim bay đến người nhận trong phạm vi ngắn (bán kính 500m), tự bốc cháy sau khi đọc xong.</li>
+<li>2. Tinh Thể Quang Âm & Gương Thì Thầm: Thiết bị liên lạc hình ảnh và âm thanh tầm trung (bán kính 20km) giữa các sinh viên quý tộc.</li>
+<li>3. Bồ Câu Ma Thuật & Trạm Dịch Chuyển: Chuyển phát bưu phẩm, thư từ đường dài giữa các thành bang đại lục.</li>
+<li>4. Ốc Vọng Âm Biển Sâu: Vỏ ốc ma thuật giúp truyền âm thanh xuyên qua bão biển và áp suất ngàn mét dưới đáy đại dương.</li>
+<li>5. Thần Giao Cách Cảm Qua Khế Ước: Cảm nhận trực tiếp dòng suy nghĩ, trạng thái cảm xúc (đói, sợ hãi, giận dữ, hưng phấn) giữa chủ nhân và thú đồng hành.</li>
+<li>6. Huyễn Âm Nhập Mộng (Tà Thuật Dạ Ngư Cấm Kỵ): Siren xâm nhập vào giấc mơ của đối phương để nhắn gửi thông điệp, quyến rũ hoặc tra tấn tinh thần.</li>
+<li>7. Vòng Tròn Ma Pháp Nghi Thức: Dùng tế lễ để liên lạc với các Cổ Thần hoặc các thế lực bên ngoài không gian đại lục.</li>
+</ul>
+<p>________________</p>
+<h1 id="chap-11">CHƯƠNG 11: CƠ CHẾ VẬN HÀNH MÔ PHỎNG THẾ GIỚI MỞ</h1>
+<h2>11.1. Lịch Trình Tự Trị 24 Giờ Của NPC</h2>
+<p>Mọi sinh linh trong thế giới Kael-Varn (từ giảng viên, sinh viên quý tộc, kẻ ăn mày đến dã thú) đều có chu kỳ sinh hoạt tự động độc lập:</p>
+<ul>
+<li>05:00 - 11:00: Giảng đường lý thuyết, chợ sáng mở cửa, ngư dân cập cảng Oakhaven.</li>
+<li>12:00 - 17:00: Huấn luyện thực chiến tại đấu trường, làm nhiệm vụ thợ săn, nghiên cứu độc dược.</li>
+<li>18:00 - 21:00: Tửu quán náo nhiệt, dạ tiệc quý tộc, chợ đen bắt đầu hoạt động ngầm.</li>
+<li>22:00 - 04:00: Ký túc xá giới nghiêm, thú đêm đi săn mồi hoang dã, các nghi thức tà giáo bí mật diễn ra.</li>
+</ul>
+<h2>11.2. Hệ Sinh Thái Chuỗi Thức Ăn Hoang Dã</h2>
+<p>Dã thú hoang dã tự săn mồi, uống nước, giao phối và tranh giành lãnh thổ mà không cần người chơi can thiệp. Kẻ yếu sẽ bị đào thải, kẻ mạnh hấp thụ ma hạch đối phương để tự tiến hóa trong tự nhiên.</p>
+<h2>11.3. Ma Trận Quan Hệ Xã Hội Ba Trục</h2>
+<p>Mỗi NPC đối với người chơi và với các NPC khác đều được tính toán theo 3 trục cảm xúc:</p>
+<ul>
+<li>Trục Đố Kỵ & Thù Ghét (-100 đến 0): Dẫn đến việc nói xấu sau lưng, phá hoại bài thi, bỏ độc vào thức ăn hoặc thuê sát thủ ám toán (thường thấy ở sinh viên quý tộc đối với học sinh nghèo Dãy Tro Tàn).</li>
+<li>Trục Thiện Cảm & Ái Tình (0 đến +100): Mở khóa sự giúp đỡ vô tư, tặng quà bí mật, tâm sự chuyện đời tư và sẵn sàng hy sinh thân mình trong chiến đấu.</li>
+<li>Trục Tôn Sùng & Ngưỡng Mộ (0 đến +100): Tuyệt đối phục tùng mệnh lệnh, xem lời nói của người chơi như chân lý và sẵn sàng chống lại cả gia tộc vì người chơi.</li>
+</ul>
+<h2>11.4. Động Cơ Lan Truyền Tin Đồn</h2>
+<p>Mọi hành động tai tiếng hoặc chiến tích của người chơi (như gian lận thi cử, hôn khế thú nơi công cộng, đánh bại thiếu gia quý tộc) sẽ lan truyền qua miệng quán trọ, thư gấp hạc và bản tin học viện sau 24 giờ.</p>
+<h2>11.5. Tương Tác Vật Lý Nguyên Tố</h2>
+<ul>
+<li>Nước kết hợp Lôi Điện -> Lan truyền điện giật trên diện rộng, gây tê liệt toàn bộ sinh vật dưới nước.</li>
+<li>Lửa kết hợp Thực Vật/Dầu -> Bùng cháy dữ dội không thể dập tắt bằng nước thường.</li>
+<li>Băng kết hợp Nước -> Đóng băng mặt nước tạo lối đi, giam giữ chân kẻ thù.</li>
+<li>Gió kết hợp Lửa -> Lốc xoáy lửa thiêu rụi chiến trường.</li>
+</ul>
+<h2>11.6. Chỉ Số Stress & Trung Thành Của Khế Thú</h2>
+<ul>
+<li>Khế thú bị bỏ đói, bị chủ nhân đánh đập hoặc ép buộc làm việc quá sức sẽ tích lũy điểm Stress.</li>
+<li>Khi điểm Stress đạt 100%, khế thú sẽ phát cuồng, quay lại cắn xé chủ nhân hoặc tự hủy khế ước trốn vào rừng sâu.</li>
+<li>Nuôi dưỡng đúng sở thích (Nhân Ngư thích rong đuôi ngựa ngâm sương; Dạ Ngư thích thịt tươi tẩm hương hoa độc; Sói thích tủy xương quái thú) sẽ gia tăng lòng trung thành và mở khóa kỹ năng ẩn.</li>
+</ul>
+<h2>11.7. Cơ Chế Tử Vong & Sẹo Chiến Tranh</h2>
+<ul>
+<li>Khế thú tử vong trong chiến đấu là vĩnh viễn nếu không được cứu chữa kịp thời bằng Nhựa Cây Trường Sinh trong vòng 24 giờ.</li>
+<li>Vết thương nặng sẽ để lại sẹo vĩnh viễn trên cơ thể nhân dạng của thú (mất một bên mắt, đứt gân cánh làm giảm tốc độ bay, để lại vết sẹo lớn trên lưng).</li>
+</ul>
+<p>________________</p>
+<h1 id="chap-12">CHƯƠNG 12: HỆ THỐNG GIÁO DỤC, LỘ TRÌNH 4 NĂM, NHIỆM VỤ & NGHỀ NGHIỆP TỐT NGHIỆP</h1>
+<h2>12.1. Lộ Trình Đào Tạo 4 Năm (120 Tín Chỉ)</h2>
+<ul>
+<li>Năm 1: Nhập Môn & Thuần Hóa Ban Đầu (Ấu Thú Giai Đoạn 1)</li>
+<li>Môn học: Giải phẫu học ma thú cơ bản, Ngôn ngữ dã thú nhập môn, Pháp chế khế ước đại lục, Tự chăm sóc và dọn chuồng trại (không được dùng người hầu).</li>
+<li>Năm 2: Chiến Thuật Phối Hợp & Đột Phá Linh Hóa (Thú Giai Đoạn 2: Linh Hóa)</li>
+<li>Môn học: Phân vai chiến thuật (Tiên phong càn quét: Sói, Hổ, Gấu; Hộ vệ kiên cố: Thiết Kình, Rùa Băng; Trinh sát tốc độ: Ưng, Cú; Ám sát và ảo thuật: Dạ Ngư, Rắn Hư Không).</li>
+<li>Năm 3: Giao Hòa Tinh Lực & Đột Phá Nhân Dạng (Thú Giai Đoạn 3: Nhân Dạng)</li>
+<li>Môn học: Sinh học thú hóa người nâng cao, Kỹ năng kiểm soát chu kỳ phát tình dã tính, Chiến Đấu Cộng Hưởng Linh Hồn, Lễ nghi xã giao quý tộc dành cho thú hóa người.</li>
+<li>Năm 4: Thực Tập Sinh Tử & Luận Văn Tốt Nghiệp</li>
+<li>Nhiệm vụ khảo nghiệm thực tế: Phong ấn một vết nứt biển sâu, tiêu diệt một ổ cướp Hắc Thị hoặc thám hiểm phế tích cổ.</li>
+</ul>
+<h2>12.2. Hệ Thống Đánh Giá & Các Kỳ Thi</h2>
+<ul>
+<li>Kỳ Thi Giữa Kỳ Sinh Tồn: Bỏ rơi học sinh vào Rừng Già Sylvanna 7 ngày với trang bị cơ bản, tính điểm bằng tai quái vật săn được.</li>
+<li>Bảng Xếp Hạng Tháng: Đấu trường lôi đài 1v1 giữa các cặp đôi để phân chia tài nguyên tu luyện và xếp hạng ký túc xá.</li>
+<li>Dạ Hội Trăng Máu: Đêm hội khiêu vũ thường niên; thời điểm nhạy cảm nhất khi thú hóa người dễ rơi vào trạng thái xúc động và bộc lộ tình cảm với chủ nhân.</li>
+</ul>
+<h2>12.3. Hệ Thống Nhiệm Vụ Học Viện & Thế Giới</h2>
+<ul>
+<li>Nhiệm Vụ Nội Khu (Nhận tại Bảng Tin Học Viện): Dọn dẹp phân rồng, canh gác thư viện cấm, hỗ trợ bào chế ma dược độc hại.</li>
+<li>Nhiệm Vụ Thế Giới (Nhận tại Cảng Oakhaven & Hiệp Hội Thợ Săn): Hộ tống đoàn tàu buôn qua Vách Đá Bão Lôi, săn lùng quái thú đào tẩu, điều tra dấu vết của Tiên Phong Giải Phóng.</li>
+</ul>
+<h2>12.4. Bảy Con Đường Nghề Nghiệp Sau Tốt Nghiệp</h2>
+<ul>
+<li>1. Hiệp Sĩ Hộ Vệ Hoàng Gia: Phục vụ Hoàng đế và các đại quý tộc Valenor.</li>
+<li>2. Thợ Săn Tiền Thưởng Tự Do: Phiêu bạt giang hồ, nhận hợp đồng săn quái vật nguy hiểm.</li>
+<li>3. Giáo Sư / Học Giả Nghiên Cứu: Giảng dạy tại Kael-Varn hoặc nghiên cứu lai tạo giống loài mới.</li>
+<li>4. Thương Nhân Môi Giới Khế Thú: Buôn bán thú cảnh, trang bị may đo và mở sàn đấu giá.</li>
+<li>5. Thám Hiểm Gia Cấm Vực: Dẫn đầu các đoàn thám hiểm tiến vào 5 đại cấm vực tìm kiếm kho báu.</li>
+<li>6. Thủ Lĩnh Phe Phái Nổi Dậy: Gia nhập Tiên Phong Giải Phóng chống lại Đế quốc.</li>
+<li>7. Ẩn Sĩ Nuôi Thú Độc Hành: Rút lui về vùng thôn quê yên tĩnh sống trọn đời cùng khế thú tri kỷ.</li>
+</ul>
+<p>________________</p>
+<h1 id="chap-13">CHƯƠNG 13: HỆ THỐNG BIẾN CỐ & SỰ KIỆN MỞ TOÀN CẦU</h1>
+<h2>13.1. Năm Lễ Hội & Biến Cố Thường Niên</h2>
+<ul>
+<li>Lễ Khai Mạc Thuần Hóa Mùa Thu: Ngày đón tân sinh viên và thức tỉnh linh thú ngẫu nhiên.</li>
+<li>Hội Thao Ma Thú Giữa Kỳ: Thi đấu chạy đua dã thú, bơi vượt biển sâu và không chiến trên bầu trời.</li>
+<li>Đêm Trăng Máu Biến Dị: Đêm trăng đỏ rực kích hoạt bản năng phát tình dã tính đồng loạt trong toàn trường.</li>
+<li>Lễ Hội Pháo Hoa Cảng Oakhaven: Thời điểm lãng mạn nhất trong năm để các cặp đôi bày tỏ tình cảm.</li>
+<li>Kỳ Thi Tốt Nghiệp Đấu Trường Sinh Tử: Sự kiện kết thúc khóa học quyết định tương lai sinh viên.</li>
+</ul>
+<h2>13.2. Năm Đại Thảm Họa Biến Động Toàn Cầu</h2>
+<ul>
+<li>Thủy Triều Biển Sâu Xâm Thực: Dạ Ngư và quái thú biển sâu tràn lên đất liền tấn công thị trấn cảng.</li>
+<li>Nhật Thực Hư Không Bùng Nổ: Không gian bị xé rách, dị chủng Hư Không tràn vào thế giới thật.</li>
+<li>Cuộc Nổi Loạn Của Valerius: Tiên Phong Giải Phóng tấn công giải phóng toàn bộ thú nuôi trong học viện.</li>
+<li>Dịch Bệnh Sốt Ma Lực Hoành Hành: Căn bệnh truyền nhiễm khiến cả người và thú phát điên cuồng sát.</li>
+<li>Cuộc Thanh Trừng Của Đế Quốc: Thống Chế Morgan ban bố thiết quân luật, xử tử mọi thú hóa người có tư tưởng phản loạn.</li>
+</ul>
+<p>________________</p>
+<h1 id="chap-14">CHƯƠNG 14: CƠ CHẾ ĐA THẦN KHẾ: MỘT CHỦ NHIỀU THÚ</h1>
+<h2>14.1. Sức Chứa Linh Hồn & Thể Chứa Đa Lõi</h2>
+<ul>
+<li>Người bình thường chỉ có thể ký khế ước với một linh thú duy nhất. Việc ký khế ước với thú thứ hai thường dẫn tới nổ tung kinh mạch mà chết.</li>
+<li>Kẻ sở hữu "Thể Chứa Đa Lõi" (như người chơi có xuất thân đặc biệt hoặc ma lực dị biến) có thể ký khế ước với tối đa 3 đến 5 linh thú khác nhau (ví dụ: nuôi cùng lúc một con Hổ Lửa và một linh thú Thủy Tộc mà không bị phản phệ).</li>
+</ul>
+<h2>14.2. Phân Bổ Tinh Lực & Nguy Cơ Kiệt Quệ Thần Thức</h2>
+<ul>
+<li>Tinh lực của chủ nhân là có hạn. Việc phải chia sẻ tinh lực cho nhiều linh thú (đặc biệt khi nhiều con cùng bước vào chu kỳ phát tình cùng một lúc) sẽ đẩy chủ nhân vào tình trạng kiệt quệ tinh lực: hoa mắt, hộc máu, ngất xỉu và giảm thọ.</li>
+<li>Chủ nhân buộc phải sắp xếp thời gian biểu tiếp xúc thân mật và điều hòa tinh lực hợp lý để tránh hậu họa.</li>
+</ul>
+<h2>14.3. Xung Đột Đố Kỵ & Bản Năng Tranh Đoạt Vị Trí Đầu Đàn</h2>
+<p>Khi trong một đàn có nhiều linh thú hóa người, bản năng tranh giành sự chú ý của chủ nhân sẽ bùng nổ dữ dội:</p>
+<ul>
+<li>Tranh giành vị trí Thủ Lĩnh Đàn: Con thú mạnh nhất sẽ tìm cách thị uy, bắt nạt và xua đuổi các con thú yếu hơn ra khỏi phòng ngủ của chủ nhân.</li>
+<li>Hiện tượng Ghi Đè Mùi Hương: Khi chủ nhân vừa được một linh thú ôm ấp vuốt ve, linh thú khác sẽ lập tức lao đến cắn hoặc cọ xát cơ thể mình lên người chủ nhân để xóa sạch mùi hương của kẻ địch, phủ lên đó mùi hương độc quyền của bản thân.</li>
+</ul>
+<h2>14.4. Đời Sống Thân Mật Đa Thể & Hợp Kích Nguyên Tố</h2>
+<ul>
+<li>Khi lòng trung thành của cả đàn đạt mức tối đa, các mâu thuẫn đố kỵ sẽ chuyển hóa thành sự hòa hợp và bảo bọc lẫn nhau.</li>
+<li>Trong chiến đấu, các khế thú liên kết qua Mạng Lưới Linh Hồn có thể thi triển các đòn hợp kích nguyên tố hủy diệt (Lôi Thủy Cuồng Nộ, Băng Hỏa Song Hành).</li>
+<li>Trong đời sống sinh hoạt, chúng sẽ cùng nhau san sẻ gánh nặng chăm sóc chủ nhân, cùng nhau sưởi ấm trong những đêm đông lạnh giá và tạo nên một gia đình dã tính kỳ lạ nhưng gắn kết bền chặt.</li>
+</ul>
+<p>*</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- TAB 2: BẢN ĐỒ & ĐỊA LÝ -->
+    <section id="tab-map" class="tab-pane">
+      <div class="section-header">
+        <h2>🗺️ BẢN ĐỒ TỌA ĐỘ & MẶT BẰNG ĐỊA LÝ</h2>
+        <p>Hệ thống không gian ma pháp 2D, phân tầng 6 cao độ và sơ đồ 8 phân khu Học viện Kael-Varn</p>
+      </div>
+
+      <div class="map-controls">
+        <button class="btn btn-primary map-btn" data-map="world">🌍 Bản Đồ Đại Lục Aethelgard</button>
+        <button class="btn btn-secondary map-btn" data-map="campus">🏫 Sơ Đồ Học Viện Kael-Varn</button>
+      </div>
+
+      <div class="map-view-box">
+        <h3 id="active-map-title" style="margin-bottom: 12px; color: var(--accent-gold-light);">Bản Đồ Toàn Cảnh Đại Lục Aethelgard (Tọa độ ma pháp & Các đại cấm vực)</h3>
+        <img id="active-map-img" src="assets/images/map_world.jpg" alt="Bản Đồ Thế Giới Thần Khế Aethelgard">
+        <p class="caption">Nhấp vào ảnh để xem độ phân giải cao hoặc zoom chi tiết</p>
+      </div>
+
+      <div class="map-grid-info">
+        <div class="info-card">
+          <h3>🧭 Tọa Độ Tâm Điểm (0, 0)</h3>
+          <p>Tháp Quang Minh tại Thánh Đô Lumina – Đế Quốc Thần Thánh Valenor. Mọi phương vị Bắc - Nam - Đông - Tây đều phân định theo trục ma pháp này.</p>
+        </div>
+        <div class="info-card">
+          <h3>🏔️ Phân Tầng 6 Cao Độ</h3>
+          <p>Từ Tầng Không Cực (+3.500m Đỉnh Vách Đá Bão Lôi), Cao Nguyên Valenor (+800m), Rừng Già Sylvanna (+200m) xuống Tầng Vực Thẳm (-10.000m Rãnh Biển Tối Vô Tận).</p>
+        </div>
+        <div class="info-card">
+          <h3>🛡️ 4 Cấp Độ An Ninh</h3>
+          <p>Vùng Xanh (An toàn tuyệt đối có lính tuần tra 24/7), Vùng Vàng (Vùng đệm sơ cấp), Vùng Đỏ (Hoang dã nguy hiểm cao), Vùng Đen (5 Đại cấm vực tử vong SSS).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: BÁCH THÚ & NHÂN THÚ GALLERY -->
+    <section id="tab-gallery" class="tab-pane">
+      <div class="section-header">
+        <h2>🐺 BÁCH THÚ THẦN KHẾ & NHÂN VẬT</h2>
+        <p>Chiêm ngưỡng chân dung các giống loài linh thú sau khi lột xác thành hình người và các nhân vật cốt cán</p>
+      </div>
+
+      <div class="gallery-filters">
+        <button class="btn btn-primary filter-btn" data-filter="all">Tất Cả</button>
+        <button class="btn btn-secondary filter-btn" data-filter="beast">Thú Rừng & Lục Địa</button>
+        <button class="btn btn-secondary filter-btn" data-filter="aquatic">Thủy Tộc & Vực Sâu</button>
+        <button class="btn btn-secondary filter-btn" data-filter="mythic">Thần Thoại & Dị Biến</button>
+        <button class="btn btn-secondary filter-btn" data-filter="character">Nhân Vật Cốt Cán</button>
+      </div>
+
+      <div class="gallery-grid">
+        <!-- SƯƠNG LANG -->
+        <div class="beast-card" data-category="beast">
+          <img src="assets/images/suong_lang.jpg" alt="Sương Lang Nguyệt Ảnh" class="beast-card-img">
+          <div class="beast-card-body">
+            <div class="beast-header">
+              <span class="beast-name">Sương Lang Nguyệt Ảnh</span>
+              <span class="rank-badge rank-a">Rank A</span>
+            </div>
+            <div class="beast-species">Nhóm Thú Rừng & Lục Địa</div>
+            <p class="beast-desc">Loài sói tuyết kiêu hãnh; khi hóa người mang mái tóc bạch kim, đôi tai sói nhạy cảm và ánh mắt sắc lạnh. Bản năng một bạn đời duy nhất tuyệt đối chung thủy.</p>
+            <div class="beast-traits"><b>Thuộc tính:</b> Băng Giá & Nguyệt Quang | <b>Khẩu vị:</b> Tủy xương quái thú nướng</div>
+          </div>
+        </div>
+
+        <!-- SIREN THỦY TỘC -->
+        <div class="beast-card" data-category="aquatic">
+          <img src="assets/images/siren.jpg" alt="Siren Dạ Khúc Uyên Sâu" class="beast-card-img">
+          <div class="beast-card-body">
+            <div class="beast-header">
+              <span class="beast-name">Siren Dạ Khúc Uyên Sâu</span>
+              <span class="rank-badge rank-s">Rank S</span>
+            </div>
+            <div class="beast-species">Nhóm Thủy Tộc & Vực Sâu</div>
+            <p class="beast-desc">Hải quái biển sâu quyến rũ chết người; giọng hát ma mị thao túng tâm trí, móng vuốt có nọc độc tê liệt. Tình cảm mang tính chiếm hữu độc hại và ghen tuông tột cùng.</p>
+            <div class="beast-traits"><b>Thuộc tính:</b> Thủy Triều & Hắc Ám | <b>Khẩu vị:</b> Mật ong ma quái & hoa độc</div>
+          </div>
+        </div>
+
+        <!-- BẠCH LỘC -->
+        <div class="beast-card" data-category="beast">
+          <img src="assets/images/bach_loc.jpg" alt="Bạch Lộc Phỉ Thúy" class="beast-card-img">
+          <div class="beast-card-body">
+            <div class="beast-header">
+              <span class="beast-name">Bạch Lộc Phỉ Thúy</span>
+              <span class="rank-badge rank-a">Rank A</span>
+            </div>
+            <div class="beast-species">Nhóm Thú Rừng & Thảo Dược</div>
+            <p class="beast-desc">Hươu thần rừng già mang sừng ngọc lục bảo; khi hóa người mang vẻ đẹp thanh khiết, e ấp. Nước mắt và hơi thở có khả năng thanh tẩy độc tố và chữa lành vết thương nặng.</p>
+            <div class="beast-traits"><b>Thuộc tính:</b> Sinh Mệnh & Tự Nhiên | <b>Khẩu vị:</b> Rêu tuyết ngâm sương mai</div>
+          </div>
+        </div>
+
+        <!-- CỬU VĨ HỒ -->
+        <div class="beast-card" data-category="mythic">
+          <img src="assets/images/cuu_vi.jpg" alt="Cửu Vĩ Huyễn Hồ" class="beast-card-img">
+          <div class="beast-card-body">
+            <div class="beast-header">
+              <span class="beast-name">Cửu Vĩ Huyễn Hồ</span>
+              <span class="rank-badge rank-s">Rank S</span>
+            </div>
+            <div class="beast-species">Nhóm Thần Thoại & Dị Biến</div>
+            <p class="beast-desc">Hồ ly chín đuôi ma mị; bậc thầy ảo thuật, thôi miên giấc mộng và ngụy trang mùi hương. Tính cách quỷ quyệt, thích trêu chọc và thử thách sự kiên nhẫn của chủ nhân.</p>
+            <div class="beast-traits"><b>Thuộc tính:</b> Huyễn Thuật & Tâm Linh | <b>Khẩu vị:</b> Tim thú nguyên tố & mật ngọt</div>
+          </div>
+        </div>
+
+        <!-- VALERIUS VANCE -->
+        <div class="beast-card" data-category="character">
+          <img src="assets/images/valerius.jpg" alt="Valerius Vance" class="beast-card-img">
+          <div class="beast-card-body">
+            <div class="beast-header">
+              <span class="beast-name">Valerius Vance</span>
+              <span class="rank-badge rank-s">Thủ Lĩnh Phản Diện</span>
+            </div>
+            <div class="beast-species">Kẻ Cứu Thế Sa Đọa Mang Nỗi Đau Câm Lặng</div>
+            <p class="beast-desc">Cựu Thủ khoa Kael-Varn, kẻ lãnh đạo phong trào Tiên Phong Giải Phóng. Từng chứng kiến người tình Nhân Ngư bị cha ruột sát hại, anh quyết tâm dìm đại lục vào biển nước để tái sinh công lý.</p>
+            <div class="beast-traits"><b>Phe phái:</b> Tiên Phong Giải Phóng | <b>Vũ khí:</b> Kiếm cổ ngữ & Vảy san hô khô</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: CẨM NANG NGƯỜI CHƠI -->
+    <section id="tab-guide" class="tab-pane">
+      <div class="section-header">
+        <h2>🧭 CẨM NANG NHẬP MÔN & SINH TỒN</h2>
+        <p>Bí kíp thực chiến, cơ chế thời gian vi mô, chu kỳ dã tính và nghệ thuật tận hưởng thế giới mở</p>
+      </div>
+
+      <div class="lore-content" style="max-width: 900px; margin: 0 auto;">
+        <h2>🌟 1. Lịch Trình Tự Trị 24 Giờ & Dòng Chảy Thời Gian Chân Thực</h2>
+        <p>Thế giới Kael-Varn chuyển động từng phút từng giờ thực tế. Nghiêm cấm bot nhảy cóc thời gian "sau vài tháng". Thời gian chỉ bước sang ngày hôm sau khi bạn chủ động cho nhân vật đi ngủ.</p>
+
+        <h2>🐺 2. Sinh Học Dã Tính & 3 Tầng Tiếp Xúc Thể Xác</h2>
+        <p><b>Tầng 1:</b> Chạm bề mặt da (xoa tai, vuốt đuôi) hồi phục ma lực cơ bản.<br>
+        <b>Tầng 2:</b> Dung nạp thân mật qua dịch thể (nụ hôn sâu, liếm vết thương) tăng tốc độ hồi phục gấp 5 lần.<br>
+        <b>Tầng 3:</b> Cắn ngập răng nanh vào tuyến gáy hoặc xương quai xanh để truyền tinh lực trực tiếp và đồng điệu linh hồn tối thượng.</p>
+
+        <h2>🌙 3. Chu Kỳ Động Dục Dã Tính & Khối Mã Chọn Giới Tính</h2>
+        <p>Diễn ra mỗi 3 tháng một lần hoặc vào đêm Trăng Máu. Đặc biệt, ngay khoảnh khắc khế thú tích lũy đủ tinh lực để hóa người, bot sẽ ngắt nhịp và xuất một khối mã HUD để bạn tự tay chọn giới tính: <b>1. Nam, 2. Nữ, 3. Giới tính linh hoạt</b>.</p>
+
+        <h2>👑 4. Cơ Chế Đa Thần Khế: Một Chủ Nhiều Thú</h2>
+        <p>Nếu sở hữu tinh lực mạnh mẽ, bạn có thể lập khế ước với 3 đến 5 thú. Đi kèm với sức mạnh vượt trội là thử thách giải quyết cuộc chiến tranh giành vị trí đầu đàn và hành vi cắn cọ xát để ghi đè mùi hương giữa các thú.</p>
+      </div>
+    </section>
+
+    <!-- TAB 5: CHARACTER BUILDER -->
+    <section id="tab-builder" class="tab-pane">
+      <div class="section-header">
+        <h2>🎮 KHỞI TẠO NHÂN VẬT TỰ DO</h2>
+        <p>Tự tay thiết lập hồ sơ nhập vai của bạn, chọn xuất thân và sao chép trực tiếp để gửi cho Bot</p>
+      </div>
+
+      <div class="builder-layout">
+        <div class="builder-form-card">
+          <div class="form-group">
+            <label for="char-name">Họ & Tên Nhân Vật:</label>
+            <input type="text" id="char-name" class="form-control" placeholder="Ví dụ: Lyra Vance, Caelum, Kaelen...">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div class="form-group">
+              <label for="char-age">Tuổi:</label>
+              <input type="number" id="char-age" class="form-control" value="18" min="15" max="100">
+            </div>
+            <div class="form-group">
+              <label for="char-gender">Giới Tính:</label>
+              <select id="char-gender" class="form-control">
+                <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
+                <option value="Phi nhị giới / Linh hoạt">Phi nhị giới / Linh hoạt</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="char-origin">Xuất Thân Ban Đầu:</label>
+            <select id="char-origin" class="form-control">
+              <option value="1. Quý Tộc Sa Sút (Nợ nần chồng chất, danh gia vọng tộc suy tàn)">1. Quý Tộc Sa Sút (Nợ nần chồng chất, gia tộc suy tàn)</option>
+              <option value="2. Học Giả Dãy Tro Tàn (Học bổng thủ khoa nghèo khó, thông tuệ ma pháp)">2. Học Giả Dãy Tro Tàn (Thủ khoa nghèo hiếu học)</option>
+              <option value="3. Kẻ Giữ Thú Nghèo Khó (Dọn dẹp chuồng trại từ nhỏ, hiểu tiếng dã thú)">3. Kẻ Giữ Thú Nghèo Khó (Hiểu tiếng động vật)</option>
+              <option value="4. Thợ Săn Tiền Thưởng Vùng Hoang Dã (Dạn dày sương gió, sinh tồn thực chiến)">4. Thợ Săn Tiền Thưởng Hoang Dã (Dạn dày sương gió)</option>
+              <option value="5. Cựu Tín Đồ Tà Giáo (Đào tẩu khỏi Giáo Phái Mẫu Thần Biển Sâu)">5. Cựu Tín Đồ Tà Giáo (Đào tẩu khỏi giáo phái)</option>
+              <option value="6. Kẻ Đào Tẩu Khỏi Pháp Trường (Vượt ngục mạo danh tân sinh viên)">6. Kẻ Đào Tẩu Khỏi Pháp Trường (Vượt ngục mạo danh)</option>
+              <option value="7. Kẻ Đào Bới Phế Tích Cổ (Say mê cổ ngữ và bản đồ cấm vực)">7. Kẻ Đào Bới Phế Tích Cổ (Khảo cổ và cấm vực)</option>
+              <option value="8. Gián Điệp Đế Quốc Cài Cắm (Mật vụ ngầm của Thống Chế Morgan)">8. Gián Điệp Đế Quốc Cài Cắm (Mật vụ ngầm hoàng gia)</option>
+              <option value="9. Dị Chủng Bán Thú Bị Ruồng Bỏ (Mang dòng máu lai thú, che giấu tai đuôi)">9. Dị Chủng Bán Thú (Mang dòng máu lai thú)</option>
+              <option value="10. Kẻ Chuyển Sinh Mất Trí Nhớ (Tỉnh dậy trên bờ biển cùng viên đá cổ)">10. Kẻ Chuyển Sinh Mất Trí Nhớ (Bí ẩn từ thế giới khác)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="char-mana">Năng Lực Ma Lực & Sở Trường:</label>
+            <select id="char-mana" class="form-control">
+              <option value="Ma lực dồi dào, tiềm năng thức tỉnh thần thú cấp cao">Ma lực dồi dào (Thiên tài ma pháp)</option>
+              <option value="Hoàn toàn không có ma lực, chiến đấu bằng độc dược, bẫy rập và thể thuật">Hoàn toàn không có ma lực (Zero-Mana Underdog)</option>
+              <option value="Dị biến nguyên tố hỗn hợp (Băng Lửa hoặc Lôi Thủy)">Dị biến nguyên tố hỗn hợp</option>
+              <option value="Tinh thần lực dị thường, có thể nghe được tiếng lòng của thú">Tinh thần lực dị thường (Đọc tâm trí thú)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="char-appearance">Ngoại Hình & Khí Chất:</label>
+            <textarea id="char-appearance" class="form-control" placeholder="Mô tả màu tóc, màu mắt, vóc dáng, vết sẹo hoặc dấu ấn linh hồn..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="char-gear">Trang Phục & Hành Trang Mang Theo:</label>
+            <input type="text" id="char-gear" class="form-control" placeholder="Ví dụ: Áo choàng thô Dãy Tro Tàn, dao găm săn thú, túi hạt giống ma thuật...">
+          </div>
+
+          <div class="form-group">
+            <label for="char-relation">Khuynh Hướng Khế Ước Với Thú:</label>
+            <select id="char-relation" class="form-control">
+              <option value="Đồng đội tri kỷ thuần khiết (Kề vai sát cánh sinh tử, không vướng bận thể xác)">Đồng đội tri kỷ thuần khiết</option>
+              <option value="Thực dụng đôi bên cùng có lợi (Hợp đồng lý tính, trao đổi quyền lợi sòng phẳng)">Thực dụng đôi bên cùng có lợi</option>
+              <option value="Ái tình & Dâng hiến linh hồn (Gắn kết sâu sắc thể xác, chia sẻ chu kỳ phát tình)">Ái tình & Gắn kết linh hồn sâu sắc</option>
+              <option value="Kình địch căng thẳng (Tranh giành thế thượng phong, mỉa mai nhưng không tách rời)">Kình địch căng thẳng & Duyên nợ</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="char-beast">Cơ Duyên Gặp Thú Ban Đầu:</label>
+            <select id="char-beast" class="form-control">
+              <option value="Bước lên Vòng Tròn Khế Ước tại Quảng Trường Học Viện">Bước lên Vòng Tròn Khế Ước tại Quảng Trường</option>
+              <option value="Tự nhặt được một con thú non bị thương rúc sau lùm cây">Tự tìm thấy một con thú bị thương trong rừng già</option>
+              <option value="Sinh vật kỳ lạ mắc cạn sau cơn bão bên bờ biển Oakhaven">Sinh vật kỳ lạ mắc cạn sau bão ven biển</option>
+              <option value="Tự do cho AI tạo sinh ngẫu nhiên dựa theo lời thoại mở đầu">Tự do cho AI tạo sinh ngẫu nhiên bí ẩn</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="preview-card">
+          <h3 style="color: var(--accent-gold-light); margin-bottom: 0.8rem;">📋 BẢN XEM TRƯỚC HỒ SƠ</h3>
+          <div id="char-preview-box" class="preview-output"></div>
+          <button id="copy-profile-btn" class="btn btn-primary" style="width: 100%;">📋 Sao Chép Hồ Sơ Để Bắt Đầu Nhập Vai</button>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 10px; text-align: center;">Sau khi sao chép, bạn hãy dán hồ sơ này vào tin nhắn mở đầu gửi cho Bot!</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="https://drive.google.com/drive/folders/1GLa8_aHMVS1i3oLgr_c7mODgYfE9ALpt" target="_blank">Thư Mục Dự Án Google Drive</a>
+      <a href="https://docs.google.com/document/d/16vhRHlocpV0qWLSN5OCI-gB2AcWkb7hAsTY177bdJdc/edit" target="_blank">Toàn Văn Lorebook 14 Chương</a>
+      <a href="https://docs.google.com/document/d/1ewCRZdGXzo0F6ibu_xIDYrwPvkr_QfPaAI_yaVjF2Ik/edit" target="_blank">Cẩm Nang Người Chơi Có Ảnh</a>
+    </div>
+    <p>© 2026 Thần Khế Aethelgard. Vũ trụ mô phỏng thế giới mở & Học viện ma thú Kael-Varn.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
