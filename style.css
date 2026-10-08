@@ -13,7 +13,7 @@
   --text-primary: #f8f9fa;
   --text-secondary: #adb5bd;
   --text-muted: #6c757d;
-  --font-serif: 'Merriweather', 'Lora', Georgia, serif;
+  --font-serif: 'Playfair Display', 'Cormorant Garamond', 'Lora', Georgia, serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --radius-sm: 6px;
   --radius-md: 12px;
@@ -65,7 +65,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: Cinzel, Merriweather, serif;
+  font-family: 'Playfair Display', 'Cormorant Garamond', 'Lora', serif;
   font-size: 1.15rem;
   font-weight: 800;
   color: var(--accent-gold);
@@ -959,7 +959,7 @@ textarea.form-control {
 
 /* Grand Dark Fantasy Typography */
 h1, h2, .nav-brand, .hero h1, .section-header h2, .panel-title {
-  font-family: 'Cinzel', 'Merriweather', serif !important;
+  font-family: 'Playfair Display', 'Cormorant Garamond', 'Lora', serif !important;
   letter-spacing: 0.5px;
 }
 
@@ -1358,7 +1358,7 @@ h1, h2, .nav-brand, .hero h1, .section-header h2, .panel-title {
 
 .lightbox-caption {
   margin-top: 14px;
-  font-family: Cinzel, Merriweather, serif;
+  font-family: 'Playfair Display', 'Cormorant Garamond', 'Lora', serif;
   color: var(--accent-gold-light);
   font-size: 1.1rem;
   font-weight: 700;
