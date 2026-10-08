@@ -41,3 +41,8 @@ Trọn bộ mã nguồn trang thông tin dành cho dự án Thần Khế Aethelg
 2. Chọn thêm dự án mới và liên kết với kho lưu trữ GitHub đã tạo ở trên.
 3. Giữ nguyên các thiết lập mặc định và nhấn Triển khai.
 4. Trang web sẽ tự động hoàn tất quá trình xuất bản với tốc độ tải trang nhanh chóng trên toàn cầu.
+
+
+---
+**Tác Giả & Sáng Lập Thế Giới**: 🦋 **Độc Dược Ngọt Ngào** 🍷
+*Bản quyền toàn bộ thế giới quan và thiết lập nhân vật thuộc về tác giả.*

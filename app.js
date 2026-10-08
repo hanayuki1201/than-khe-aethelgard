@@ -224,7 +224,7 @@ const ZONE_DATA = {
       "Kiểm tra an ninh",
       "Ra vào học viện"
     ],
-    "img": "https://lh3.googleusercontent.com/d/19YPyyBJRdQbqsyZGvWWUKZh8OnTdClt9",
+    "img": "assets/images/zone_01_cong_thanh.jpg",
     "driveUrl": "https://drive.google.com/file/d/19YPyyBJRdQbqsyZGvWWUKZh8OnTdClt9/view?usp=drivesdk"
   },
   "02": {
@@ -242,7 +242,7 @@ const ZONE_DATA = {
       "Thi thức tỉnh",
       "Lễ hội học viện"
     ],
-    "img": "https://lh3.googleusercontent.com/d/1glSXZRjWkNa3AFpOHNem06gjYr2RuQYL",
+    "img": "assets/images/zone_02_quang_truong.jpg",
     "driveUrl": "https://drive.google.com/file/d/1glSXZRjWkNa3AFpOHNem06gjYr2RuQYL/view?usp=drivesdk"
   },
   "03": {
@@ -261,7 +261,7 @@ const ZONE_DATA = {
       "Chăm sóc thủy tộc trong hồ riêng",
       "Đáp và nghỉ cho phi hành thú"
     ],
-    "img": "https://lh3.googleusercontent.com/d/1xjuLAyymliYVV1H9uFMf6cPXJVnJ3aAm",
+    "img": "assets/images/zone_03_thap_kim_cuong.jpg",
     "driveUrl": "https://drive.google.com/file/d/1xjuLAyymliYVV1H9uFMf6cPXJVnJ3aAm/view?usp=drivesdk"
   },
   "04": {
@@ -279,7 +279,7 @@ const ZONE_DATA = {
       "Tự kiếm củi và giữ ấm",
       "Chia sẻ chỗ nghỉ với khế thú"
     ],
-    "img": "https://lh3.googleusercontent.com/d/17EFE6C-qgnQhPecce6HLrA6pMJiLsxbI",
+    "img": "assets/images/zone_04_day_tro_tan.jpg",
     "driveUrl": "https://drive.google.com/file/d/17EFE6C-qgnQhPecce6HLrA6pMJiLsxbI/view?usp=drivesdk"
   },
   "05": {
@@ -298,7 +298,7 @@ const ZONE_DATA = {
       "Tra cứu cổ thư và bản đồ",
       "Bào chế ma dược"
     ],
-    "img": "https://lh3.googleusercontent.com/d/1N2GbjNyfjDz14R0IHI0sESa2lHr0fhDP",
+    "img": "assets/images/zone_05_giang_duong.jpg",
     "driveUrl": "https://drive.google.com/file/d/1N2GbjNyfjDz14R0IHI0sESa2lHr0fhDP/view?usp=drivesdk"
   },
   "06": {
@@ -315,7 +315,7 @@ const ZONE_DATA = {
       "Quyết đấu 1v1 phân hạng tháng",
       "Huấn luyện thực chiến phối hợp"
     ],
-    "img": "https://lh3.googleusercontent.com/d/1-VyvgdrOhBNubRlSFy4ODTpOlNUFY3Ff",
+    "img": "assets/images/zone_06_dau_truong.jpg",
     "driveUrl": "https://drive.google.com/file/d/1-VyvgdrOhBNubRlSFy4ODTpOlNUFY3Ff/view?usp=drivesdk"
   },
   "07": {
@@ -333,7 +333,7 @@ const ZONE_DATA = {
       "Dọn chuồng",
       "Thực hành chăm sóc dã thú cấp thấp"
     ],
-    "img": "https://lh3.googleusercontent.com/d/1XBZ9MEBmU8rR20nBW9R8IMdXaZ5u1XDo",
+    "img": "assets/images/zone_07_rung_sinh_thai.jpg",
     "driveUrl": "https://drive.google.com/file/d/1XBZ9MEBmU8rR20nBW9R8IMdXaZ5u1XDo/view?usp=drivesdk"
   },
   "08": {
@@ -352,7 +352,7 @@ const ZONE_DATA = {
       "Ghé tửu quán thợ săn và xưởng rèn ma khí",
       "Khám phá chợ đen khi thủy triều rút"
     ],
-    "img": "https://lh3.googleusercontent.com/d/11zhCNdEFErDE5xd6kn1KK9K87q39SStW",
+    "img": "assets/images/zone_08_oakhaven.jpg",
     "driveUrl": "https://drive.google.com/file/d/11zhCNdEFErDE5xd6kn1KK9K87q39SStW/view?usp=drivesdk"
   }
 };
