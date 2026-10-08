@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initWorldHUD();
   initAmbientAudio();
   initSandboxSimulator();
+  initImageZoom();
 });
 
 // 1. TAB NAVIGATION
@@ -697,4 +698,72 @@ function selectChoice(el) {
   el.style.borderColor = 'var(--accent-gold)';
   el.style.background = 'rgba(212, 175, 55, 0.2)';
   showToast('Đã chọn hành động: ' + el.textContent.substring(0, 30) + '...');
+}
+
+// ========================================================
+// 11. IMAGE ZOOM LIGHTBOX (FULLSCREEN INTERACTIVE VIEW)
+// ========================================================
+function initImageZoom() {
+  const modal = document.getElementById('image-lightbox');
+  const imgEl = document.getElementById('lightbox-img');
+  const captionEl = document.getElementById('lightbox-caption');
+  const closeBtn = document.getElementById('lightbox-close-btn');
+  const backdrop = document.querySelector('.lightbox-backdrop');
+
+  if (!modal || !imgEl) return;
+
+  function openLightbox(src, caption) {
+    imgEl.src = src;
+    if (captionEl) captionEl.textContent = caption || '';
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(() => {
+      imgEl.src = '';
+    }, 250);
+  }
+
+  // Bind to all clickable images
+  const zoomableSelectors = [
+    '.beast-card-img',
+    '.map-view-box img',
+    '.spotlight-img-container img',
+    '.zone-img'
+  ];
+
+  document.querySelectorAll(zoomableSelectors.join(',')).forEach(img => {
+    img.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const src = img.getAttribute('src');
+      let caption = img.getAttribute('alt') || '';
+      
+      const beastCard = img.closest('.beast-card');
+      if (beastCard) {
+        const nameEl = beastCard.querySelector('.beast-name');
+        const speciesEl = beastCard.querySelector('.beast-species');
+        if (nameEl) caption = nameEl.textContent + (speciesEl ? ' — ' + speciesEl.textContent : '');
+      }
+
+      const zoneCard = img.closest('.zone-card');
+      if (zoneCard) {
+        const titleEl = zoneCard.querySelector('.zone-title');
+        if (titleEl) caption = titleEl.textContent;
+      }
+
+      openLightbox(src, caption);
+    });
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+  if (backdrop) backdrop.addEventListener('click', closeLightbox);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeLightbox();
+    }
+  });
 }
