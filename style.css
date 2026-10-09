@@ -2546,48 +2546,78 @@ img {
     border-radius: 20px !important;
   }
 
-  /* 3. THANH TRẠNG THÁI HUD THU GỌN LƯỚI 2 CỘT */
+  /* 3. BẢNG TRẠNG THÁI THẾ GIỚI HIỂN THỊ TRỌN VẸN KHÔNG CẮT CHỮ TRÊN DI ĐỘNG */
   .world-hud-bar {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 6px 8px !important;
-    padding: 8px 10px !important;
-    margin: 6px 8px 12px !important;
-    font-size: 0.72rem !important;
-    border-radius: 10px !important;
-    width: calc(100% - 16px) !important;
+    position: static !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 7px !important;
+    padding: 10px 12px !important;
+    margin: 8px 10px 14px !important;
+    font-size: 0.82rem !important;
+    border-radius: 12px !important;
+    width: calc(100% - 20px) !important;
+    background: rgba(10, 15, 26, 0.96) !important;
+    border: 1px solid rgba(212, 175, 55, 0.35) !important;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6) !important;
   }
 
   .hud-item {
     display: flex !important;
-    align-items: center !important;
-    gap: 4px !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    font-size: 0.72rem !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+    white-space: normal !important; /* Hiển thị trọn vẹn toàn bộ dòng, không cắt bớt */
+    overflow: visible !important;
+    text-overflow: clip !important;
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+    padding: 6px 8px !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-radius: 6px !important;
+    border: 1px solid rgba(212, 175, 55, 0.12) !important;
+    width: 100% !important;
   }
 
-  .hud-item .hud-val {
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+  .hud-icon {
+    font-size: 0.95rem !important;
+    flex-shrink: 0 !important;
+    margin-top: 1px !important;
+  }
+
+  .hud-label {
+    color: var(--text-muted) !important;
+    font-weight: 600 !important;
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    font-size: 0.8rem !important;
+  }
+
+  .hud-val {
+    color: var(--accent-gold-light) !important;
+    font-weight: 600 !important;
+    white-space: normal !important; /* Không dùng nowrap nữa, không bị dấu ba chấm */
+    overflow: visible !important;
+    text-overflow: clip !important;
+    word-break: break-word !important;
+    flex-grow: 1 !important;
+    font-size: 0.8rem !important;
   }
 
   .hud-actions {
-    grid-column: 1 / -1 !important;
     display: flex !important;
-    gap: 6px !important;
-    justify-content: center !important;
+    gap: 8px !important;
+    justify-content: stretch !important;
     width: 100% !important;
     margin-top: 4px !important;
   }
 
   .btn-hud {
-    padding: 5px 6px !important;
-    font-size: 0.72rem !important;
+    padding: 7px 10px !important;
+    font-size: 0.78rem !important;
     flex: 1 !important;
     text-align: center !important;
     white-space: nowrap !important;
+    border-radius: 8px !important;
   }
 
   /* 4. TIÊU ĐỀ HERO SECTION VỪA VẶN */
@@ -2817,5 +2847,28 @@ img {
 
   .guide-part-card {
     padding: 1.2rem !important;
+  }
+
+  /* 11. CHÂN TRANG FOOTER */
+  .footer {
+    padding: 2rem 1rem 3rem !important;
+    margin-top: 2.5rem !important;
+  }
+
+  .footer-signature-badge {
+    font-size: 0.85rem !important;
+    padding: 8px 14px !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    text-align: center !important;
+    border-radius: 20px !important;
+    line-height: 1.4 !important;
+  }
+
+  .footer-copyright {
+    font-size: 0.78rem !important;
+    text-align: center !important;
+    line-height: 1.4 !important;
+    padding: 0 4px !important;
   }
 }

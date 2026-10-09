@@ -44,5 +44,5 @@ Trọn bộ mã nguồn trang thông tin dành cho dự án Thần Khế Aethelg
 
 
 ---
-**Tác Giả & Sáng Lập Thế Giới**: 🦋 **Độc Dược Ngọt Ngào** 🍷
+**Tác Giả & Sáng Lập Thế Giới**: **🦋Độc Dược Ngọt Ngào🍷**
 *Bản quyền toàn bộ thế giới quan và thiết lập nhân vật thuộc về tác giả.*
