@@ -537,6 +537,7 @@ function initAmbientAudio() {
   let ytPlayer = null;
   let ytReady = false;
   let isPlaying = false;
+  let autoPlayTriggered = false;
   const youtubeVideoId = 'XC71IzBpyCE';
 
   // Load YouTube IFrame API asynchronously
@@ -558,7 +559,7 @@ function initAmbientAudio() {
         width: '320',
         videoId: youtubeVideoId,
         playerVars: {
-          autoplay: 0,
+          autoplay: 1,
           controls: 1,
           loop: 1,
           playlist: youtubeVideoId,
@@ -572,10 +573,17 @@ function initAmbientAudio() {
               const vol = parseInt(volumeSlider.value) || 70;
               event.target.setVolume(vol);
             }
+            // Thử tự động phát ngay khi trình phát sẵn sàng
+            try {
+              event.target.playVideo();
+            } catch (err) {
+              console.warn('Autoplay waiting for user gesture:', err);
+            }
           },
           onStateChange: (event) => {
             if (event.data === YT.PlayerState.PLAYING) {
               isPlaying = true;
+              autoPlayTriggered = true;
               updateSoundUI(true);
             } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
               isPlaying = false;
@@ -588,6 +596,26 @@ function initAmbientAudio() {
       console.warn('YouTube IFrame API Init:', err);
     }
   };
+
+  // Cơ chế kích hoạt tự động phát mượt mà trên trình duyệt có chính sách hạn chế âm thanh
+  function triggerAutoplayOnGesture() {
+    if (autoPlayTriggered || isPlaying) return;
+    if (ytReady && ytPlayer && typeof ytPlayer.playVideo === 'function') {
+      try {
+        ytPlayer.playVideo();
+        autoPlayTriggered = true;
+        ['click', 'touchstart', 'keydown', 'scroll'].forEach(evt => {
+          document.removeEventListener(evt, triggerAutoplayOnGesture);
+        });
+      } catch (err) {
+        console.warn('Autoplay gesture trigger:', err);
+      }
+    }
+  }
+
+  ['click', 'touchstart', 'keydown', 'scroll'].forEach(evt => {
+    document.addEventListener(evt, triggerAutoplayOnGesture, { passive: true, once: true });
+  });
 
   function updateSoundUI(playing) {
     if (playing) {
@@ -628,14 +656,13 @@ function initAmbientAudio() {
       }
     }
 
-    // Fallback: Embed direct iframe if API was blocked or running from file://
+    // Dự phòng trường hợp trình phát API bị chặn hoặc chạy file:// trực tiếp
     const playerContainer = document.getElementById('yt-bgm-player');
     if (playerContainer) {
       if (!isPlaying) {
         playerContainer.innerHTML = `<iframe width="100%" height="170" src="https://www.youtube-nocookie.com/embed/${youtubeVideoId}?autoplay=1&loop=1&playlist=${youtubeVideoId}&controls=1" title="Khúc Nhạc Thần Hermes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
         isPlaying = true;
         updateSoundUI(true);
-        // Expand widget if collapsed so user can see player
         if (bgmWidget && bgmWidget.classList.contains('collapsed')) {
           bgmWidget.classList.remove('collapsed');
           if (widgetToggle) widgetToggle.textContent = '▼';
@@ -650,14 +677,14 @@ function initAmbientAudio() {
     }
   }
 
-  // Bind HUD Sound Button
+  // Nút trên thanh trạng thái HUD
   if (soundBtn) {
     soundBtn.addEventListener('click', () => {
       togglePlayBGM();
     });
   }
 
-  // Bind Widget Play Button
+  // Nút trên widget nổi
   if (playBtn) {
     playBtn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -665,7 +692,7 @@ function initAmbientAudio() {
     });
   }
 
-  // Volume slider
+  // Thanh trượt âm lượng
   if (volumeSlider) {
     volumeSlider.addEventListener('input', (e) => {
       const vol = parseInt(e.target.value) || 70;
@@ -675,7 +702,7 @@ function initAmbientAudio() {
     });
   }
 
-  // Widget collapse/expand
+  // Thu nhỏ / mở rộng widget
   if (widgetHeader) {
     widgetHeader.addEventListener('click', () => {
       if (bgmWidget) {
