@@ -767,3 +767,16 @@ function initImageZoom() {
     }
   });
 }
+
+// Guide smooth scrolling for in-page anchors
+document.addEventListener('click', (e) => {
+  const guideBtn = e.target.closest('.guide-nav-btn');
+  if (guideBtn) {
+    e.preventDefault();
+    const targetId = guideBtn.getAttribute('href');
+    const targetEl = document.querySelector(targetId);
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+});
