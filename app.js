@@ -921,3 +921,13 @@ document.addEventListener('click', (e) => {
     }
   }
 });
+
+
+// Event listener for Portal notify buttons
+document.addEventListener('click', (e) => {
+  const notifyBtn = e.target.closest('.portal-action-btn.btn-notify');
+  if (notifyBtn) {
+    const portalName = notifyBtn.getAttribute('data-portal') || 'phân khu';
+    showToast(`Đã ghi nhận đăng ký! Bạn sẽ nhận được thông báo khi ${portalName} chính thức khai mở ✨`);
+  }
+});
