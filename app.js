@@ -531,55 +531,249 @@ function initAmbientAudio() {
 
   let audioCtx = null;
   let isPlaying = false;
-  let osc1 = null, osc2 = null, gainNode = null;
+  let masterGain = null;
+  let windSource = null, windFilter = null, windGain = null, windLfo = null;
+  let padOscs = [];
+  let melodyTimer = null;
+
+  // Thang âm huyền bí Celtic / Dorian (D minor pentatonic / hexatonic)
+  const fantasyScale = [
+    293.66, // D4
+    349.23, // F4
+    392.00, // G4
+    440.00, // A4
+    523.25, // C5
+    587.33, // D5
+    698.46, // F5
+    880.00  // A5
+  ];
+
+  // Hợp âm nền cổ kính (D minor 9 / Aethelgard Sacred Pad)
+  const padFrequencies = [
+    73.42,  // D2 (trầm mặc)
+    110.00, // A2 (khoảng năm thiêng)
+    146.83, // D3 (đồng âm)
+    174.61, // F3 (quãng ba thứ dịu êm)
+    220.00, // A3 (hoàn thiện)
+    261.63  // C4 (quãng bảy huyền diệu)
+  ];
+
+  function playFantasyBell(freq, volume = 0.08) {
+    if (!audioCtx || !isPlaying) return;
+    try {
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const oscHarmonic = audioCtx.createOscillator();
+      const bellGain = audioCtx.createGain();
+      const filter = audioCtx.createBiquadFilter();
+
+      // Bộ lọc chuông pha lê
+      filter.type = 'bandpass';
+      filter.frequency.setValueAtTime(freq * 1.5, now);
+      filter.Q.setValueAtTime(4.0, now);
+
+      // Âm chính hình sin trong trẻo
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, now);
+
+      // Âm bồi chuông gió lung linh
+      oscHarmonic.type = 'triangle';
+      oscHarmonic.frequency.setValueAtTime(freq * 2.76, now);
+
+      bellGain.gain.setValueAtTime(0, now);
+      bellGain.gain.linearRampToValueAtTime(volume, now + 0.04);
+      bellGain.gain.exponentialRampToValueAtTime(0.0001, now + 3.8);
+
+      osc.connect(filter);
+      oscHarmonic.connect(filter);
+      filter.connect(bellGain);
+      bellGain.connect(masterGain);
+
+      osc.start(now);
+      oscHarmonic.start(now);
+      osc.stop(now + 4.0);
+      oscHarmonic.stop(now + 4.0);
+    } catch (e) {
+      console.warn(e);
+    }
+  }
+
+  function startFantasyAmbience() {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    audioCtx = new AudioContext();
+
+    // Master Gain
+    masterGain = audioCtx.createGain();
+    masterGain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+    masterGain.gain.exponentialRampToValueAtTime(0.35, audioCtx.currentTime + 2.5);
+    masterGain.connect(audioCtx.destination);
+
+    // 1. GIÓ BIỂN & SƯƠNG MÙ BÁN ĐẢO (Filtered Noise)
+    const bufferSize = audioCtx.sampleRate * 2;
+    const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+    const output = noiseBuffer.getChannelData(0);
+    let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
+    for (let i = 0; i < bufferSize; i++) {
+      const white = Math.random() * 2 - 1;
+      b0 = 0.99886 * b0 + white * 0.0555179;
+      b1 = 0.99332 * b1 + white * 0.0750759;
+      b2 = 0.96900 * b2 + white * 0.1538520;
+      b3 = 0.86650 * b3 + white * 0.3104856;
+      b4 = 0.55000 * b4 + white * 0.5329522;
+      b5 = -0.7616 * b5 - white * 0.0168980;
+      output[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362) * 0.04;
+      b6 = white * 0.115926;
+    }
+
+    windSource = audioCtx.createBufferSource();
+    windSource.buffer = noiseBuffer;
+    windSource.loop = true;
+
+    windFilter = audioCtx.createBiquadFilter();
+    windFilter.type = 'lowpass';
+    windFilter.frequency.setValueAtTime(260, audioCtx.currentTime);
+
+    windGain = audioCtx.createGain();
+    windGain.gain.setValueAtTime(0.18, audioCtx.currentTime);
+
+    // LFO mô phỏng từng đợt sóng và gió dập dềnh
+    windLfo = audioCtx.createOscillator();
+    const lfoGain = audioCtx.createGain();
+    windLfo.frequency.setValueAtTime(0.12, audioCtx.currentTime);
+    lfoGain.gain.setValueAtTime(140, audioCtx.currentTime);
+    windLfo.connect(lfoGain);
+    lfoGain.connect(windFilter.frequency);
+
+    windSource.connect(windFilter);
+    windFilter.connect(windGain);
+    windGain.connect(masterGain);
+
+    windSource.start();
+    windLfo.start();
+
+    // 2. DÀN DÂY HUYỀN ẢO HỌC VIỆN (Ancient Warm Pad)
+    padOscs = [];
+    padFrequencies.forEach((freq, idx) => {
+      const osc = audioCtx.createOscillator();
+      const oscGain = audioCtx.createGain();
+      const oscFilter = audioCtx.createBiquadFilter();
+
+      osc.type = idx % 2 === 0 ? 'sine' : 'triangle';
+      // Detune nhẹ tạo hiệu ứng dàn nhạc huyền diệu
+      const detune = (idx - 2.5) * 4.2;
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      osc.detune.setValueAtTime(detune, audioCtx.currentTime);
+
+      oscFilter.type = 'lowpass';
+      oscFilter.frequency.setValueAtTime(550, audioCtx.currentTime);
+      oscFilter.Q.setValueAtTime(1.8, audioCtx.currentTime);
+
+      oscGain.gain.setValueAtTime(0.045 / (idx + 1), audioCtx.currentTime);
+
+      osc.connect(oscFilter);
+      oscFilter.connect(oscGain);
+      oscGain.connect(masterGain);
+
+      osc.start();
+      padOscs.push(osc);
+    });
+
+    // 3. TIẾNG CHUÔNG GIÓ & HẠC CẦM MA THUẬT (Melodic Chimes)
+    function scheduleNextChime() {
+      if (!isPlaying) return;
+      const randomNote = fantasyScale[Math.floor(Math.random() * fantasyScale.length)];
+      playFantasyBell(randomNote, 0.06);
+
+      if (Math.random() > 0.6) {
+        setTimeout(() => {
+          if (isPlaying) {
+            const harmonicNote = fantasyScale[Math.floor(Math.random() * fantasyScale.length)];
+            playFantasyBell(harmonicNote, 0.04);
+          }
+        }, 320);
+      }
+
+      const nextDelay = 2800 + Math.random() * 2400;
+      melodyTimer = setTimeout(scheduleNextChime, nextDelay);
+    }
+
+    setTimeout(() => {
+      playFantasyBell(fantasyScale[0], 0.09);
+      setTimeout(() => playFantasyBell(fantasyScale[3], 0.07), 400);
+      setTimeout(() => playFantasyBell(fantasyScale[5], 0.06), 800);
+    }, 400);
+
+    melodyTimer = setTimeout(scheduleNextChime, 3000);
+  }
+
+  function stopFantasyAmbience() {
+    if (!audioCtx || !masterGain) return;
+    try {
+      if (melodyTimer) clearTimeout(melodyTimer);
+      masterGain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.2);
+      setTimeout(() => {
+        if (windSource) {
+          try { windSource.stop(); } catch(e) {}
+        }
+        if (windLfo) {
+          try { windLfo.stop(); } catch(e) {}
+        }
+        padOscs.forEach(osc => {
+          try { osc.stop(); } catch(e) {}
+        });
+        padOscs = [];
+        if (audioCtx && audioCtx.state !== 'closed') {
+          audioCtx.close();
+        }
+        isPlaying = false;
+        soundBtn.textContent = '🔇 Âm Hưởng Fantasy';
+        soundBtn.classList.remove('btn-hud-highlight');
+        showToast('Đã tắt âm hưởng đại lục');
+      }, 1300);
+    } catch (e) {
+      console.error(e);
+      isPlaying = false;
+    }
+  }
 
   soundBtn.addEventListener('click', () => {
     if (!isPlaying) {
       try {
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        audioCtx = new AudioContext();
-
-        gainNode = audioCtx.createGain();
-        gainNode.gain.setValueAtTime(0.01, audioCtx.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.05, audioCtx.currentTime + 2);
-        gainNode.connect(audioCtx.destination);
-
-        // Mystical low drone (C#2 68.68Hz)
-        osc1 = audioCtx.createOscillator();
-        osc1.type = 'sine';
-        osc1.frequency.setValueAtTime(68.68, audioCtx.currentTime);
-
-        // Harmonic shimmer (G#2 103.83Hz)
-        osc2 = audioCtx.createOscillator();
-        osc2.type = 'triangle';
-        osc2.frequency.setValueAtTime(103.83, audioCtx.currentTime);
-
-        osc1.connect(gainNode);
-        osc2.connect(gainNode);
-
-        osc1.start();
-        osc2.start();
-
+        startFantasyAmbience();
         isPlaying = true;
-        soundBtn.textContent = '🔊 Âm Hưởng (Bật)';
+        soundBtn.textContent = '🎶 Âm Hưởng Fantasy (Đang Bật)';
         soundBtn.classList.add('btn-hud-highlight');
-        showToast('Đã kích hoạt âm hưởng không gian ma mị');
+        showToast('Đã kích hoạt khúc ca sương mù Aethelgard 🎶');
       } catch (err) {
         console.error(err);
       }
     } else {
-      if (gainNode && audioCtx) {
-        gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1);
-        setTimeout(() => {
-          if (osc1) osc1.stop();
-          if (osc2) osc2.stop();
-          if (audioCtx) audioCtx.close();
-          isPlaying = false;
-          soundBtn.textContent = '🔇 Âm Hưởng';
-          soundBtn.classList.remove('btn-hud-highlight');
-          showToast('Đã tắt âm hưởng');
-        }, 1000);
-      }
+      stopFantasyAmbience();
+    }
+  });
+
+  // Hiệu ứng âm thanh nhấn nút ma thuật (Click Rune Chime)
+  document.addEventListener('click', (e) => {
+    if (!isPlaying || !audioCtx) return;
+    const clickable = e.target.closest('.nav-link, .btn, .beast-card, .zone-card, .btn-hud, .guide-nav-btn');
+    if (clickable && clickable.id !== 'hud-sound-btn') {
+      try {
+        const now = audioCtx.currentTime;
+        const clickOsc = audioCtx.createOscillator();
+        const clickGain = audioCtx.createGain();
+        clickOsc.type = 'sine';
+        clickOsc.frequency.setValueAtTime(1174.66, now); // D6
+        clickOsc.frequency.exponentialRampToValueAtTime(587.33, now + 0.12);
+
+        clickGain.gain.setValueAtTime(0.015, now);
+        clickGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.12);
+
+        clickOsc.connect(clickGain);
+        clickGain.connect(masterGain);
+
+        clickOsc.start(now);
+        clickOsc.stop(now + 0.15);
+      } catch(err) {}
     }
   });
 }
