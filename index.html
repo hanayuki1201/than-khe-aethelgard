@@ -55,7 +55,7 @@
       <span class="hud-val">Vi Mô (1 Lượt = 15-30 Phút)</span>
     </div>
     <div class="hud-actions">
-      <button class="btn-hud" id="hud-sound-btn" title="Bật/Tắt Âm Hưởng Fantasy">🔇 Âm Hưởng Fantasy</button>
+      <button class="btn-hud" id="hud-sound-btn" title="Bật/Tắt Nhạc Nền Celtic (Khúc Nhạc Thần Hermes)">🎵 Nhạc Nền Celtic</button>
       <button class="btn-hud btn-hud-highlight" data-target="tab-sandbox">🎲 Thám Hiểm Hộp Cát</button>
     </div>
   </div>
@@ -2108,6 +2108,45 @@
       </div>
     </div>
   </footer>
+
+    <!-- FLOATING FANTASY BGM PLAYER WIDGET -->
+  <aside id="fantasy-bgm-widget" class="fantasy-bgm-widget collapsed" aria-label="Bộ điều khiển nhạc nền">
+    <div class="bgm-widget-header" id="bgm-widget-header" title="Nhấp để thu nhỏ / mở rộng trình phát">
+      <div class="bgm-widget-title-area">
+        <span class="bgm-disc-icon">🎶</span>
+        <div class="bgm-info-text">
+          <div class="bgm-title">Khúc Nhạc Thần Hermes</div>
+          <div class="bgm-subtitle">Celtic Fantasy — World Fantasia</div>
+        </div>
+      </div>
+      <div class="bgm-header-actions">
+        <button id="bgm-widget-toggle" class="bgm-toggle-btn" title="Mở rộng trình phát" aria-label="Mở rộng">▲</button>
+      </div>
+    </div>
+
+    <div class="bgm-widget-body" id="bgm-widget-body">
+      <!-- Embedded YouTube IFrame Box -->
+      <div class="bgm-video-container">
+        <div id="yt-bgm-player"></div>
+      </div>
+
+      <div class="bgm-widget-controls">
+        <button id="bgm-play-btn" class="bgm-ctrl-btn" title="Phát hoặc tạm dừng nhạc">▶️ Phát Nhạc</button>
+        <div class="bgm-volume-wrap" title="Điều chỉnh âm lượng">
+          <span>🔊</span>
+          <input type="range" id="bgm-volume-slider" min="0" max="100" value="70" class="bgm-slider" aria-label="Âm lượng nhạc nền">
+        </div>
+      </div>
+
+      <div class="bgm-widget-footer">
+        <a href="https://www.youtube.com/watch?v=XC71IzBpyCE" target="_blank" rel="noopener noreferrer" class="bgm-source-link" title="Xem trên YouTube">
+          🔗 Mở trên YouTube
+        </a>
+        <span class="bgm-tag-pill">Celtic Classical</span>
+      </div>
+    </div>
+  </aside>
+
 
   <script src="app.js"></script>
   <!-- IMAGE ZOOM LIGHTBOX MODAL -->

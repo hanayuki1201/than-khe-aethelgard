@@ -527,255 +527,175 @@ function initWorldHUD() {
 // ========================================================
 function initAmbientAudio() {
   const soundBtn = document.getElementById('hud-sound-btn');
-  if (!soundBtn) return;
+  const bgmWidget = document.getElementById('fantasy-bgm-widget');
+  const widgetHeader = document.getElementById('bgm-widget-header');
+  const widgetToggle = document.getElementById('bgm-widget-toggle');
+  const playBtn = document.getElementById('bgm-play-btn');
+  const volumeSlider = document.getElementById('bgm-volume-slider');
+  const discIcon = document.querySelector('.bgm-disc-icon');
 
-  let audioCtx = null;
+  let ytPlayer = null;
+  let ytReady = false;
   let isPlaying = false;
-  let masterGain = null;
-  let windSource = null, windFilter = null, windGain = null, windLfo = null;
-  let padOscs = [];
-  let melodyTimer = null;
+  const youtubeVideoId = 'XC71IzBpyCE';
 
-  // Thang âm huyền bí Celtic / Dorian (D minor pentatonic / hexatonic)
-  const fantasyScale = [
-    293.66, // D4
-    349.23, // F4
-    392.00, // G4
-    440.00, // A4
-    523.25, // C5
-    587.33, // D5
-    698.46, // F5
-    880.00  // A5
-  ];
-
-  // Hợp âm nền cổ kính (D minor 9 / Aethelgard Sacred Pad)
-  const padFrequencies = [
-    73.42,  // D2 (trầm mặc)
-    110.00, // A2 (khoảng năm thiêng)
-    146.83, // D3 (đồng âm)
-    174.61, // F3 (quãng ba thứ dịu êm)
-    220.00, // A3 (hoàn thiện)
-    261.63  // C4 (quãng bảy huyền diệu)
-  ];
-
-  function playFantasyBell(freq, volume = 0.08) {
-    if (!audioCtx || !isPlaying) return;
-    try {
-      const now = audioCtx.currentTime;
-      const osc = audioCtx.createOscillator();
-      const oscHarmonic = audioCtx.createOscillator();
-      const bellGain = audioCtx.createGain();
-      const filter = audioCtx.createBiquadFilter();
-
-      // Bộ lọc chuông pha lê
-      filter.type = 'bandpass';
-      filter.frequency.setValueAtTime(freq * 1.5, now);
-      filter.Q.setValueAtTime(4.0, now);
-
-      // Âm chính hình sin trong trẻo
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(freq, now);
-
-      // Âm bồi chuông gió lung linh
-      oscHarmonic.type = 'triangle';
-      oscHarmonic.frequency.setValueAtTime(freq * 2.76, now);
-
-      bellGain.gain.setValueAtTime(0, now);
-      bellGain.gain.linearRampToValueAtTime(volume, now + 0.04);
-      bellGain.gain.exponentialRampToValueAtTime(0.0001, now + 3.8);
-
-      osc.connect(filter);
-      oscHarmonic.connect(filter);
-      filter.connect(bellGain);
-      bellGain.connect(masterGain);
-
-      osc.start(now);
-      oscHarmonic.start(now);
-      osc.stop(now + 4.0);
-      oscHarmonic.stop(now + 4.0);
-    } catch (e) {
-      console.warn(e);
-    }
-  }
-
-  function startFantasyAmbience() {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    audioCtx = new AudioContext();
-
-    // Master Gain
-    masterGain = audioCtx.createGain();
-    masterGain.gain.setValueAtTime(0.001, audioCtx.currentTime);
-    masterGain.gain.exponentialRampToValueAtTime(0.35, audioCtx.currentTime + 2.5);
-    masterGain.connect(audioCtx.destination);
-
-    // 1. GIÓ BIỂN & SƯƠNG MÙ BÁN ĐẢO (Filtered Noise)
-    const bufferSize = audioCtx.sampleRate * 2;
-    const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-    const output = noiseBuffer.getChannelData(0);
-    let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
-    for (let i = 0; i < bufferSize; i++) {
-      const white = Math.random() * 2 - 1;
-      b0 = 0.99886 * b0 + white * 0.0555179;
-      b1 = 0.99332 * b1 + white * 0.0750759;
-      b2 = 0.96900 * b2 + white * 0.1538520;
-      b3 = 0.86650 * b3 + white * 0.3104856;
-      b4 = 0.55000 * b4 + white * 0.5329522;
-      b5 = -0.7616 * b5 - white * 0.0168980;
-      output[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362) * 0.04;
-      b6 = white * 0.115926;
-    }
-
-    windSource = audioCtx.createBufferSource();
-    windSource.buffer = noiseBuffer;
-    windSource.loop = true;
-
-    windFilter = audioCtx.createBiquadFilter();
-    windFilter.type = 'lowpass';
-    windFilter.frequency.setValueAtTime(260, audioCtx.currentTime);
-
-    windGain = audioCtx.createGain();
-    windGain.gain.setValueAtTime(0.18, audioCtx.currentTime);
-
-    // LFO mô phỏng từng đợt sóng và gió dập dềnh
-    windLfo = audioCtx.createOscillator();
-    const lfoGain = audioCtx.createGain();
-    windLfo.frequency.setValueAtTime(0.12, audioCtx.currentTime);
-    lfoGain.gain.setValueAtTime(140, audioCtx.currentTime);
-    windLfo.connect(lfoGain);
-    lfoGain.connect(windFilter.frequency);
-
-    windSource.connect(windFilter);
-    windFilter.connect(windGain);
-    windGain.connect(masterGain);
-
-    windSource.start();
-    windLfo.start();
-
-    // 2. DÀN DÂY HUYỀN ẢO HỌC VIỆN (Ancient Warm Pad)
-    padOscs = [];
-    padFrequencies.forEach((freq, idx) => {
-      const osc = audioCtx.createOscillator();
-      const oscGain = audioCtx.createGain();
-      const oscFilter = audioCtx.createBiquadFilter();
-
-      osc.type = idx % 2 === 0 ? 'sine' : 'triangle';
-      // Detune nhẹ tạo hiệu ứng dàn nhạc huyền diệu
-      const detune = (idx - 2.5) * 4.2;
-      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-      osc.detune.setValueAtTime(detune, audioCtx.currentTime);
-
-      oscFilter.type = 'lowpass';
-      oscFilter.frequency.setValueAtTime(550, audioCtx.currentTime);
-      oscFilter.Q.setValueAtTime(1.8, audioCtx.currentTime);
-
-      oscGain.gain.setValueAtTime(0.045 / (idx + 1), audioCtx.currentTime);
-
-      osc.connect(oscFilter);
-      oscFilter.connect(oscGain);
-      oscGain.connect(masterGain);
-
-      osc.start();
-      padOscs.push(osc);
-    });
-
-    // 3. TIẾNG CHUÔNG GIÓ & HẠC CẦM MA THUẬT (Melodic Chimes)
-    function scheduleNextChime() {
-      if (!isPlaying) return;
-      const randomNote = fantasyScale[Math.floor(Math.random() * fantasyScale.length)];
-      playFantasyBell(randomNote, 0.06);
-
-      if (Math.random() > 0.6) {
-        setTimeout(() => {
-          if (isPlaying) {
-            const harmonicNote = fantasyScale[Math.floor(Math.random() * fantasyScale.length)];
-            playFantasyBell(harmonicNote, 0.04);
-          }
-        }, 320);
-      }
-
-      const nextDelay = 2800 + Math.random() * 2400;
-      melodyTimer = setTimeout(scheduleNextChime, nextDelay);
-    }
-
-    setTimeout(() => {
-      playFantasyBell(fantasyScale[0], 0.09);
-      setTimeout(() => playFantasyBell(fantasyScale[3], 0.07), 400);
-      setTimeout(() => playFantasyBell(fantasyScale[5], 0.06), 800);
-    }, 400);
-
-    melodyTimer = setTimeout(scheduleNextChime, 3000);
-  }
-
-  function stopFantasyAmbience() {
-    if (!audioCtx || !masterGain) return;
-    try {
-      if (melodyTimer) clearTimeout(melodyTimer);
-      masterGain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.2);
-      setTimeout(() => {
-        if (windSource) {
-          try { windSource.stop(); } catch(e) {}
-        }
-        if (windLfo) {
-          try { windLfo.stop(); } catch(e) {}
-        }
-        padOscs.forEach(osc => {
-          try { osc.stop(); } catch(e) {}
-        });
-        padOscs = [];
-        if (audioCtx && audioCtx.state !== 'closed') {
-          audioCtx.close();
-        }
-        isPlaying = false;
-        soundBtn.textContent = '🔇 Âm Hưởng Fantasy';
-        soundBtn.classList.remove('btn-hud-highlight');
-        showToast('Đã tắt âm hưởng đại lục');
-      }, 1300);
-    } catch (e) {
-      console.error(e);
-      isPlaying = false;
-    }
-  }
-
-  soundBtn.addEventListener('click', () => {
-    if (!isPlaying) {
-      try {
-        startFantasyAmbience();
-        isPlaying = true;
-        soundBtn.textContent = '🎶 Âm Hưởng Fantasy (Đang Bật)';
-        soundBtn.classList.add('btn-hud-highlight');
-        showToast('Đã kích hoạt khúc ca sương mù Aethelgard 🎶');
-      } catch (err) {
-        console.error(err);
-      }
+  // Load YouTube IFrame API asynchronously
+  if (!window.YT) {
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScript = document.getElementsByTagName('script')[0];
+    if (firstScript && firstScript.parentNode) {
+      firstScript.parentNode.insertBefore(tag, firstScript);
     } else {
-      stopFantasyAmbience();
+      document.head.appendChild(tag);
     }
-  });
+  }
 
-  // Hiệu ứng âm thanh nhấn nút ma thuật (Click Rune Chime)
-  document.addEventListener('click', (e) => {
-    if (!isPlaying || !audioCtx) return;
-    const clickable = e.target.closest('.nav-link, .btn, .beast-card, .zone-card, .btn-hud, .guide-nav-btn');
-    if (clickable && clickable.id !== 'hud-sound-btn') {
+  window.onYouTubeIframeAPIReady = function() {
+    try {
+      ytPlayer = new YT.Player('yt-bgm-player', {
+        height: '170',
+        width: '320',
+        videoId: youtubeVideoId,
+        playerVars: {
+          autoplay: 0,
+          controls: 1,
+          loop: 1,
+          playlist: youtubeVideoId,
+          modestbranding: 1,
+          rel: 0
+        },
+        events: {
+          onReady: (event) => {
+            ytReady = true;
+            if (volumeSlider) {
+              const vol = parseInt(volumeSlider.value) || 70;
+              event.target.setVolume(vol);
+            }
+          },
+          onStateChange: (event) => {
+            if (event.data === YT.PlayerState.PLAYING) {
+              isPlaying = true;
+              updateSoundUI(true);
+            } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
+              isPlaying = false;
+              updateSoundUI(false);
+            }
+          }
+        }
+      });
+    } catch (err) {
+      console.warn('YouTube IFrame API Init:', err);
+    }
+  };
+
+  function updateSoundUI(playing) {
+    if (playing) {
+      if (soundBtn) {
+        soundBtn.textContent = '🎶 BGM: Đang Phát';
+        soundBtn.classList.add('btn-hud-highlight');
+      }
+      if (playBtn) playBtn.textContent = '⏸️ Tạm Dừng';
+      if (discIcon) discIcon.classList.add('spinning');
+    } else {
+      if (soundBtn) {
+        soundBtn.textContent = '🎵 Nhạc Nền Celtic';
+        soundBtn.classList.remove('btn-hud-highlight');
+      }
+      if (playBtn) playBtn.textContent = '▶️ Phát Nhạc';
+      if (discIcon) discIcon.classList.remove('spinning');
+    }
+  }
+
+  function togglePlayBGM() {
+    if (ytReady && ytPlayer && typeof ytPlayer.getPlayerState === 'function') {
       try {
-        const now = audioCtx.currentTime;
-        const clickOsc = audioCtx.createOscillator();
-        const clickGain = audioCtx.createGain();
-        clickOsc.type = 'sine';
-        clickOsc.frequency.setValueAtTime(1174.66, now); // D6
-        clickOsc.frequency.exponentialRampToValueAtTime(587.33, now + 0.12);
-
-        clickGain.gain.setValueAtTime(0.015, now);
-        clickGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.12);
-
-        clickOsc.connect(clickGain);
-        clickGain.connect(masterGain);
-
-        clickOsc.start(now);
-        clickOsc.stop(now + 0.15);
-      } catch(err) {}
+        const state = ytPlayer.getPlayerState();
+        if (state === YT.PlayerState.PLAYING) {
+          ytPlayer.pauseVideo();
+          isPlaying = false;
+          updateSoundUI(false);
+          showToast('Đã tạm dừng nhạc nền');
+        } else {
+          ytPlayer.playVideo();
+          isPlaying = true;
+          updateSoundUI(true);
+          showToast('Đang phát: Khúc Nhạc Thần Hermes 🎶');
+        }
+        return;
+      } catch (e) {
+        console.warn('ytPlayer error, falling back:', e);
+      }
     }
-  });
+
+    // Fallback: Embed direct iframe if API was blocked or running from file://
+    const playerContainer = document.getElementById('yt-bgm-player');
+    if (playerContainer) {
+      if (!isPlaying) {
+        playerContainer.innerHTML = `<iframe width="100%" height="170" src="https://www.youtube-nocookie.com/embed/${youtubeVideoId}?autoplay=1&loop=1&playlist=${youtubeVideoId}&controls=1" title="Khúc Nhạc Thần Hermes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        isPlaying = true;
+        updateSoundUI(true);
+        // Expand widget if collapsed so user can see player
+        if (bgmWidget && bgmWidget.classList.contains('collapsed')) {
+          bgmWidget.classList.remove('collapsed');
+          if (widgetToggle) widgetToggle.textContent = '▼';
+        }
+        showToast('Đang phát: Khúc Nhạc Thần Hermes 🎶');
+      } else {
+        playerContainer.innerHTML = '';
+        isPlaying = false;
+        updateSoundUI(false);
+        showToast('Đã dừng phát nhạc');
+      }
+    }
+  }
+
+  // Bind HUD Sound Button
+  if (soundBtn) {
+    soundBtn.addEventListener('click', () => {
+      togglePlayBGM();
+    });
+  }
+
+  // Bind Widget Play Button
+  if (playBtn) {
+    playBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      togglePlayBGM();
+    });
+  }
+
+  // Volume slider
+  if (volumeSlider) {
+    volumeSlider.addEventListener('input', (e) => {
+      const vol = parseInt(e.target.value) || 70;
+      if (ytPlayer && typeof ytPlayer.setVolume === 'function') {
+        ytPlayer.setVolume(vol);
+      }
+    });
+  }
+
+  // Widget collapse/expand
+  if (widgetHeader) {
+    widgetHeader.addEventListener('click', () => {
+      if (bgmWidget) {
+        bgmWidget.classList.toggle('collapsed');
+        if (widgetToggle) {
+          widgetToggle.textContent = bgmWidget.classList.contains('collapsed') ? '▲' : '▼';
+        }
+      }
+    });
+  }
+
+  if (widgetToggle) {
+    widgetToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (bgmWidget) {
+        bgmWidget.classList.toggle('collapsed');
+        widgetToggle.textContent = bgmWidget.classList.contains('collapsed') ? '▲' : '▼';
+      }
+    });
+  }
 }
 
 // ========================================================
