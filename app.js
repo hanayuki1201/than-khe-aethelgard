@@ -367,8 +367,7 @@ function initZoneExplorer() {
   const spotlightDesc = document.getElementById('spotlight-desc');
   const spotlightFeatures = document.getElementById('spotlight-features');
   const spotlightActivities = document.getElementById('spotlight-activities');
-  const spotlightDriveLink = document.getElementById('spotlight-drive-link');
-
+  
   function selectZone(zoneKey) {
     const data = ZONE_DATA[zoneKey];
     if (!data) return;
@@ -402,9 +401,7 @@ function initZoneExplorer() {
       spotlightActivities.innerHTML = data.activities.map(a => `<li>${a}</li>`).join('');
     }
 
-    if (spotlightDriveLink) {
-      spotlightDriveLink.href = data.driveUrl;
-    }
+    
   }
 
   zoneBtns.forEach(btn => {
@@ -867,6 +864,35 @@ function initImageZoom() {
       imgEl.src = '';
     }, 250);
   }
+
+  // Spotlight zoom button
+  const spotlightZoomBtn = document.getElementById('btn-zoom-spotlight');
+  if (spotlightZoomBtn) {
+    spotlightZoomBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const sImg = document.getElementById('spotlight-img');
+      const sTitle = document.getElementById('spotlight-title');
+      if (sImg) {
+        openLightbox(sImg.src, sTitle ? sTitle.textContent : sImg.alt);
+      }
+    });
+  }
+
+  // Zone card zoom buttons
+  document.querySelectorAll('.btn-zoom-zone').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const zCard = btn.closest('.zone-card');
+      if (zCard) {
+        const zImg = zCard.querySelector('.zone-img');
+        const zTitle = zCard.querySelector('.zone-title');
+        if (zImg) {
+          openLightbox(zImg.src, zTitle ? zTitle.textContent : zImg.alt);
+        }
+      }
+    });
+  });
 
   // Bind to all clickable images
   const zoomableSelectors = [
