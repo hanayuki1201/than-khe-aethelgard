@@ -360,9 +360,49 @@ body {
 .lore-content h1 { font-size: 1.8rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
 .lore-content h2 { font-size: 1.35rem; color: var(--accent-gold-light); }
 .lore-content h3 { font-size: 1.15rem; color: #e0e1dd; }
-.lore-content p { margin-bottom: 1rem; color: #ced4da; }
-.lore-content ul { margin-bottom: 1.2rem; padding-left: 24px; color: #ced4da; }
-.lore-content li { margin-bottom: 0.4rem; }
+.lore-content p { 
+  margin-bottom: 1.15rem; 
+  color: #ced4da; 
+  line-height: 1.85; 
+}
+.lore-content ul {
+  list-style: none;
+  padding-left: 0.3rem;
+  margin-top: 0.6rem;
+  margin-bottom: 1.6rem;
+}
+.lore-content li {
+  position: relative;
+  padding-left: 1.65rem;
+  margin-bottom: 0.8rem;
+  color: #d1d5db;
+  line-height: 1.8;
+  font-size: 1rem;
+}
+.lore-content li::before {
+  content: "◆";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent-gold, #d4af37);
+  font-size: 0.72rem;
+  line-height: 1.8;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.65);
+}
+.lore-content li strong, .lore-content li b {
+  color: var(--accent-gold-light, #f3e5ab);
+  font-weight: 600;
+}
+.lore-content ul ul {
+  margin-top: 0.5rem;
+  margin-bottom: 0.8rem;
+  padding-left: 1rem;
+}
+.lore-content ul ul li::before {
+  content: "―";
+  color: #94a3b8;
+  font-size: 0.85rem;
+}
 
 /* MAP TAB */
 .map-controls {

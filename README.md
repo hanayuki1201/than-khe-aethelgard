@@ -46,3 +46,11 @@ Trọn bộ mã nguồn trang thông tin dành cho dự án Thần Khế Aethelg
 ---
 **Tác Giả & Sáng Lập Thế Giới**: **🦋Độc Dược Ngọt Ngào🍷**
 *Bản quyền toàn bộ thế giới quan và thiết lập nhân vật thuộc về tác giả.*
+
+
+## Đồng bộ cơ chế 2.4.1 — 22/10/2026
+- NO_SKIP khóa; giấc ngủ hợp lệ dùng REST_TRANSITION.
+- Hướng dẫn HUD cuối bài, log 5 lượt/checkpoint 20 lượt và chuyển chat thống nhất với prompt.
+- Lựa chọn biến cố được mang vào nội dung sao chép; gieo lại xóa lựa chọn trước.
+- Các đoạn/cấu hình NSFW hiện có được giữ nguyên; chưa coi những khác biệt nội bộ ở phần đó là đã giải quyết.
+- Gói nguồn đã kiểm tra, chưa đồng nghĩa đã triển khai lên website công khai.

@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMapSwitcher();
   initGalleryFilters();
   initCharacterBuilder();
+  enhanceLoreListLabels();
   initChapterSearch();
   initZoneExplorer();
   initAmbientParticles();
@@ -109,7 +110,9 @@ function initCharacterBuilder() {
     mana: document.getElementById('char-mana'),
     gear: document.getElementById('char-gear'),
     relation: document.getElementById('char-relation'),
-    beastEncounter: document.getElementById('char-beast')
+    pastLife: document.getElementById('char-past-life'),
+    beastEncounter: document.getElementById('char-beast'),
+    intimacy: document.getElementById('char-intimacy')
   };
 
   const previewBox = document.getElementById('char-preview-box');
@@ -125,19 +128,36 @@ function initCharacterBuilder() {
     const originVal = inputs.origin?.value || 'Quý Tộc Sa Sút';
     const manaVal = inputs.mana?.value || 'Ma lực dồi dào';
     const gearVal = inputs.gear?.value.trim() || 'Áo choàng thô, túi ma dược, dao găm săn thú.';
-    const relationVal = inputs.relation?.value || 'Đồng đội tri kỷ thuần khiết';
+    const relationVal = inputs.relation?.value || 'Đồng đội thuần khiết';
+    const pastLifeVal = inputs.pastLife?.value || 'Chưa kích hoạt';
     const encounterVal = inputs.beastEncounter?.value || 'Bước lên Vòng Tròn Khế Ước tại Quảng Trường';
+    const intimacyVal = inputs.intimacy?.value || 'Đồng hành khám phá (Mặc định)';
 
     const templateText = 
-`[HỒ SƠ KHỞI TẠO NHÂN VẬT: THẦN KHẾ AETHELGARD]
-* Họ & Tên: ${nameVal}
-* Tuổi & Giới tính: ${ageVal} tuổi | ${genderVal}
-* Ngoại hình & Khí chất: ${appearanceVal}
-* Xuất thân: ${originVal}
-* Ma Lực & Sở Trường: ${manaVal}
-* Trang Phục & Hành Trang Ban Đầu: ${gearVal}
-* Khuynh Hướng Quan Hệ Với Khế Thú: ${relationVal}
-* Cơ Duyên Gặp Thú Ban Đầu: ${encounterVal}`;
+`┌────────────────────────────────────────────────────────┐
+│      📜 [HỒ SƠ KHỞI TẠO NHÂN VẬT: THẦN KHẾ AETHELGARD]  │
+├────────────────────────────────────────────────────────┤
+│ • Họ & Tên: ${nameVal}
+│ • Tuổi & Giới tính: ${ageVal} tuổi | ${genderVal}
+│ • Ngoại hình & Khí chất: ${appearanceVal}
+│ • Xuất thân: ${originVal}
+│ • Ma Lực & Sở Trường: ${manaVal}
+│ • Trang Phục & Hành Trang Ban Đầu: ${gearVal}
+│ • Khuynh Hướng Quan Hệ Với Khế Thú: ${relationVal}
+│ • Tùy Chọn Tiền Kiếp: ${pastLifeVal}
+│ • Cơ Duyên Gặp Thú Ban Đầu: ${encounterVal}
+│ • Ranh Giới Thân Mật: ${intimacyVal}
+└────────────────────────────────────────────────────────┘
+
+Chúc các bé iu chơi vui nha 💖❤️
+🦋 Độc Dược Ngọt Ngào 🍷
+
+📍 Hệ thống liên kết dự án:
+- 🌐 Website dự án (Đọc thông tin): https://than-khe-aethelgard.vercel.app/
+- 📘 Facebook hỗ trợ & giao lưu: https://www.facebook.com/share/1F6uRVhBYE/
+- ✨ Trang chủ chính (Delicious Poison): https://deliciouspoison.lovable.app
+- 🏷️ Web hỗ trợ đặt tên: https://docdanhquan.ai.studio/
+- 📖 Web đọc cốt truyện / Plot: https://hanayuki1201.github.io/doc-duoc-ngot-ngao/`;
 
     previewBox.textContent = templateText;
   }
@@ -799,6 +819,7 @@ function initSandboxSimulator() {
       else outcomeType.textContent = `⚠️ Nguy Cấp: ${scen.type}`;
     }
 
+    if (choicesContainer) choicesContainer.dataset.selectedAction = '';
     const narrative = scen.desc(loc, time, weather, beast, state);
     if (encounterText) encounterText.innerHTML = narrative;
 
@@ -818,10 +839,11 @@ function initSandboxSimulator() {
   if (copyBtn) {
     copyBtn.addEventListener('click', () => {
       const text = encounterText?.innerText || '';
+      const selectedAction = choicesContainer?.dataset.selectedAction || '';
       const prompt = `[BIẾN CỐ HỘP CÁT - THẦN KHẾ AETHELGARD]
 ${text}
 
-[HÀNH ĐỘNG CỦA TÔI]: `;
+[HÀNH ĐỘNG CỦA TÔI]: ${selectedAction}`;
       navigator.clipboard.writeText(prompt).then(() => {
         showToast('Đã sao chép kịch bản thám hiểm vào bộ nhớ tạm!');
       }).catch(() => {
@@ -832,6 +854,8 @@ ${text}
 }
 
 function selectChoice(el) {
+  const container = document.getElementById('choices-container');
+  if (container) container.dataset.selectedAction = el.textContent.trim();
   document.querySelectorAll('.choice-item').forEach(c => c.style.borderColor = 'var(--border-color)');
   el.style.borderColor = 'var(--accent-gold)';
   el.style.background = 'rgba(212, 175, 55, 0.2)';
@@ -957,3 +981,19 @@ document.addEventListener('click', (e) => {
     showToast(`Đã ghi nhận đăng ký! Bạn sẽ nhận được thông báo khi ${portalName} chính thức khai mở ✨`);
   }
 });
+
+// Tự động làm sáng nhãn tiêu đề trước dấu hai chấm trong Đại Lục Toàn Thư
+function enhanceLoreListLabels() {
+  const loreLis = document.querySelectorAll('.lore-content li');
+  loreLis.forEach(li => {
+    if (!li.querySelector('strong') && !li.querySelector('b')) {
+      const text = li.innerHTML;
+      const colonIdx = text.indexOf(':');
+      if (colonIdx > 0 && colonIdx < 60) {
+        const label = text.substring(0, colonIdx);
+        const rest = text.substring(colonIdx);
+        li.innerHTML = `<strong>${label}</strong>${rest}`;
+      }
+    }
+  });
+}
